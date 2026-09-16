@@ -1,0 +1,48 @@
+{
+  "home": {
+    "heroTitle": "Shop thoughtfully curated essentials",
+    "heroDescription": "Discover quality products across electronics, fashion, and more.",
+    "shopCategories": "Shop categories",
+    "featuredTitle": "Featured products",
+    "featuredDescription": "A selection from our live catalogue.",
+    "viewAllCategories": "View all categories",
+    "shopByCategory": "Shop by category",
+    "shopByCategoryDescription": "Browse products by collection."
+  },
+  "sort": {
+    "label": "Sort by",
+    "featured": "Featured",
+    "priceAsc": "Price: low to high",
+    "priceDesc": "Price: high to low",
+    "rating": "Top rated"
+  },
+  "rating": {
+    "a11y": "{rate} out of 5, {count} ratings"
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "categories": "Categories",
+    "products": "Products"
+  },
+  "empty": {
+    "title": "No products found",
+    "description": "There are no products to show in this view right now."
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "description": "We could not load the catalogue. Please try again.",
+    "retry": "Try again"
+  },
+  "product": {
+    "description": "Description",
+    "category": "Category"
+  },
+  "categoriesPage": {
+    "title": "Categories",
+    "description": "Explore every collection in the BAYAN catalogue."
+  },
+  "categoryPage": {
+    "productCount": "{count, plural, =0 {No products} one {# product} other {# products}}"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "home": {
+    "heroTitle": "تسوق أساسيات مختارة بعناية",
+    "heroDescription": "اكتشف منتجات عالية الجودة في الإلكترونيات والأزياء والمزيد.",
+    "shopCategories": "تسوق الفئات",
+    "featuredTitle": "منتجات مميزة",
+    "featuredDescription": "مجموعة من كتالوجنا المباشر.",
+    "viewAllCategories": "عرض كل الفئات",
+    "shopByCategory": "تسوق حسب الفئة",
+    "shopByCategoryDescription": "تصفح المنتجات حسب المجموعة."
+  },
+  "sort": {
+    "label": "ترتيب حسب",
+    "featured": "مميز",
+    "priceAsc": "السعر: من الأقل إلى الأعلى",
+    "priceDesc": "السعر: من الأعلى إلى الأقل",
+    "rating": "الأعلى تقييماً"
+  },
+  "rating": {
+    "a11y": "{rate} من 5، {count} تقييمات"
+  },
+  "breadcrumbs": {
+    "label": "مسار التنقل",
+    "home": "الرئيسية",
+    "categories": "الفئات",
+    "products": "المنتجات"
+  },
+  "empty": {
+    "title": "لا توجد منتجات",
+    "description": "لا توجد منتجات لعرضها في هذا العرض حالياً."
+  },
+  "errors": {
+    "title": "حدث خطأ ما",
+    "description": "تعذّر تحميل الكتالوج. يُرجى المحاولة مرة أخرى.",
+    "retry": "إعادة المحاولة"
+  },
+  "product": {
+    "description": "الوصف",
+    "category": "الفئة"
+  },
+  "categoriesPage": {
+    "title": "الفئات",
+    "description": "استكشف كل المجموعات في كتالوج بيان."
+  },
+  "categoryPage": {
+    "productCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجاً} other {# منتج}}"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "brand": {
+    "name": "BAYAN"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "retry": "Try again",
+    "backHome": "Back to home"
+  },
+  "loading": {
+    "default": "Loading…"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "ar": "Arabic"
+  },
+  "metadata": {
+    "title": "BAYAN",
+    "description": "BAYAN e-commerce — modern bilingual shopping"
+  },
+  "a11y": {
+    "skipToMain": "Skip to main content",
+    "openMenu": "Open menu",
+    "mainNav": "Main navigation",
+    "footerNav": "Footer navigation"
+  },
+  "footer": {
+    "copyright": "© {year} BAYAN"
+  }
+}
