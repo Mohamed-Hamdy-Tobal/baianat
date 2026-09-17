@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "BAYAN"
+    "name": "BAIANAT"
   },
   "actions": {
     "save": "Save",
@@ -14,12 +14,13 @@
   },
   "language": {
     "label": "Language",
+    "switchTo": "Switch to {language}",
     "en": "English",
     "ar": "Arabic"
   },
   "metadata": {
-    "title": "BAYAN",
-    "description": "BAYAN e-commerce — modern bilingual shopping"
+    "title": "BAIANAT",
+    "description": "BAIANAT e-commerce — modern bilingual shopping"
   },
   "a11y": {
     "skipToMain": "Skip to main content",
@@ -28,6 +29,6 @@
     "footerNav": "Footer navigation"
   },
   "footer": {
-    "copyright": "© {year} BAYAN"
+    "copyright": "© {year} BAIANAT"
   }
 }

@@ -5,7 +5,7 @@ import { fontVariables } from "@/styles/fonts";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "BAYAN — Not Found",
+  title: "BAIANAT — Not Found",
   description: "The page you are looking for does not exist.",
 };
 

@@ -60,7 +60,10 @@ export function MobileNav() {
         </nav>
         <div className="mt-auto border-t border-border pt-4">
           <Suspense fallback={null}>
-            <LanguageSwitcher />
+            <div className="flex items-center justify-between gap-3 px-1">
+              <span className="text-sm text-text-secondary">{tCommon("language.label")}</span>
+              <LanguageSwitcher />
+            </div>
           </Suspense>
         </div>
       </SheetContent>

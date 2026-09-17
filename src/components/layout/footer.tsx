@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { PRIMARY_NAV } from "@/components/layout/primary-nav";
 import { Link } from "@/i18n/navigation";
+import { MainContainer } from "./main-container";
 
 export async function Footer() {
   const tCommon = await getTranslations("common");
@@ -9,8 +10,8 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-border bg-surface">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 lg:px-8">
+    <footer className="py-10 border-t border-border bg-surface">
+      <MainContainer>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <Link
             href="/"
@@ -33,7 +34,7 @@ export async function Footer() {
         </div>
 
         <p className="text-sm text-text-muted">{tCommon("footer.copyright", { year })}</p>
-      </div>
+      </MainContainer>
     </footer>
   );
 }

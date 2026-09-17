@@ -17,7 +17,7 @@ export function DesktopNav({ className }: DesktopNavProps) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label={tCommon("a11y.mainNav")} className={cn("hidden items-center gap-1 md:flex", className)}>
+    <nav aria-label={tCommon("a11y.mainNav")} className={cn("hidden items-center gap-0.5 md:flex", className)}>
       {PRIMARY_NAV.map((item) => {
         const active = isNavActive(pathname, item.href);
 
@@ -27,15 +27,21 @@ export function DesktopNav({ className }: DesktopNavProps) {
             href={item.href}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "border-b-2 px-3 py-2 text-sm font-medium transition-colors",
+              "group relative px-3 py-2 text-sm font-medium transition-colors duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
               "motion-reduce:transition-none",
-              active
-                ? "border-primary text-primary"
-                : "border-transparent text-text-secondary hover:text-text",
+              active ? "text-primary" : "text-text-secondary hover:text-text",
             )}
           >
             {t(item.key)}
+            <span
+              aria-hidden
+              className={cn(
+                "absolute inset-x-3 -bottom-0.5 h-0.5 origin-center rounded-full bg-primary transition-transform duration-300 ease-out",
+                "motion-reduce:transition-none",
+                active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100 group-hover:bg-border-strong",
+              )}
+            />
           </Link>
         );
       })}

@@ -4,11 +4,41 @@ import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 
-import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import { type Locale } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
 
-export function LanguageSwitcher() {
+function FlagEn({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 40" className={className} aria-hidden>
+      <rect width="60" height="40" fill="#012169" />
+      <path d="M0 0 L60 40 M60 0 L0 40" stroke="#fff" strokeWidth="8" />
+      <path d="M0 0 L60 40 M60 0 L0 40" stroke="#C8102E" strokeWidth="4" />
+      <path d="M30 0 V40 M0 20 H60" stroke="#fff" strokeWidth="12" />
+      <path d="M30 0 V40 M0 20 H60" stroke="#C8102E" strokeWidth="6" />
+    </svg>
+  );
+}
+
+function FlagAr({ className }: { className?: string }) {
+  return (
+    <svg width="24" height="25"  className={className} viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 18.3249C24 19.0321 23.719 19.7104 23.219 20.2105C22.7189 20.7106 22.0406 20.9915 21.3333 20.9915H2.66667C1.95942 20.9915 1.28115 20.7106 0.781049 20.2105C0.280952 19.7104 0 19.0321 0 18.3249V6.32487C0 5.61763 0.280952 4.93935 0.781049 4.43925C1.28115 3.93915 1.95942 3.6582 2.66667 3.6582H21.3333C22.0406 3.6582 22.7189 3.93915 23.219 4.43925C23.719 4.93935 24 5.61763 24 6.32487V18.3249Z" fill="#141414" />
+      <path d="M0 8.99023H24V15.6569H0V8.99023Z" fill="#EEEEEE" />
+      <path d="M21.3333 3.6582H2.66667C1.95942 3.6582 1.28115 3.93915 0.781049 4.43925C0.280952 4.93935 0 5.61763 0 6.32487L0 8.99154H24V6.32487C24 5.61763 23.719 4.93935 23.219 4.43925C22.7189 3.93915 22.0406 3.6582 21.3333 3.6582Z" fill="#CE1225" />
+      <path d="M9.82812 14.6995C9.82812 14.6995 9.83879 14.8661 9.98413 14.9495C9.98413 14.9495 9.94279 15.0748 10.0988 15.1475C10.2548 15.2201 10.8175 15.3348 11.7968 15.3348C12.7761 15.3348 13.3281 15.2308 13.4741 15.1575C13.6201 15.0848 13.6301 14.9181 13.6301 14.9181C13.6301 14.9181 13.7861 14.8348 13.7761 14.7308C13.7661 14.6268 13.5575 14.5121 13.5575 14.5121C13.5575 14.5121 13.5055 14.3768 13.3595 14.3248C13.2135 14.2728 12.7448 14.5541 11.8488 14.5121C10.9528 14.4701 10.4428 14.3348 10.2761 14.3455C10.1095 14.3561 10.0368 14.5228 10.0368 14.5228C10.0368 14.5228 9.84879 14.6061 9.82812 14.6995Z" fill="#BF9300" />
+      <path d="M9.95353 14.6897C9.94486 14.7517 10.0789 14.8877 10.0789 14.8877C10.0789 14.8877 10.0789 15.0437 10.2142 15.0857C10.3495 15.1277 10.9015 15.2317 11.7975 15.2211C12.6935 15.2104 13.3289 15.1584 13.4015 15.0957C13.4742 15.0331 13.5369 14.8977 13.5369 14.8977C13.5369 14.8977 13.6829 14.7937 13.6722 14.7104C13.6615 14.6271 13.4535 14.5751 13.4535 14.5751C13.4535 14.5751 13.3949 14.4497 13.3255 14.3977C13.2562 14.3457 12.8082 14.6057 11.8495 14.6057C10.9115 14.6057 10.3702 14.3764 10.2769 14.3871C10.1835 14.3977 10.1209 14.5744 10.1209 14.5744C10.1209 14.5744 9.96419 14.6171 9.95353 14.6897Z" fill="#EEEEEE" />
+      <path d="M13.9016 10.6467C13.9016 10.6467 13.881 10.1574 13.433 10.2194C12.985 10.282 12.9536 10.5007 12.4743 10.5527L12.3756 10.562C12.2958 10.3453 12.2516 10.117 12.245 9.88604C12.245 9.57337 12.339 9.43804 12.0156 9.28204C11.693 9.12604 11.6303 9.27137 11.6303 9.27137C11.6303 9.27137 11.3803 9.14604 11.2656 9.24004C11.151 9.33404 11.2136 9.57337 11.2656 9.5007C11.3176 9.42804 11.5263 9.63604 11.5263 9.63604C11.597 9.98204 11.3963 10.3567 11.259 10.5654C11.2116 10.5607 11.1736 10.5587 11.1203 10.5527C10.641 10.5007 10.6096 10.282 10.1616 10.2194C9.71362 10.1567 9.69296 10.6467 9.69296 10.6467L9.51562 14.428L9.88029 14.1467L9.88229 14.102L10.641 13.428L10.7676 13.3014L10.4536 14.2194C10.4536 14.2194 9.97429 14.188 10.1096 14.5734C10.1096 14.5734 10.1823 14.3547 10.3076 14.396C10.433 14.4374 10.797 14.5314 10.797 14.5314L10.9223 14.7294L11.0783 14.5834L11.5676 14.5627C11.5676 14.5627 11.7236 14.604 11.7136 14.74C11.7421 14.6815 11.7508 14.6153 11.7383 14.5514L11.8856 14.5414C11.8701 14.6084 11.8781 14.6788 11.9083 14.7407C11.8976 14.6054 12.0543 14.5634 12.0543 14.5634L12.5436 14.584L12.7003 14.73L12.8256 14.532C12.8256 14.532 13.1896 14.438 13.3143 14.3967C13.439 14.3554 13.5123 14.574 13.5123 14.574C13.6476 14.1887 13.1683 14.22 13.1683 14.22L12.869 13.3447L12.953 13.4287L13.7116 14.1027L13.7136 14.1474L14.0783 14.4287L13.9016 10.6467ZM11.8303 12.9387C11.079 12.4747 11.017 11.3034 11.017 11.3034C11.017 11.3034 11.4816 11.2794 11.819 11.0427C12.123 11.3127 12.6416 11.282 12.6416 11.282C12.6416 11.282 12.6063 12.458 11.8303 12.9387ZM13.5476 10.5014L12.9123 11.1054L12.8056 11.148C12.6963 11.152 12.1643 11.1534 11.829 10.8554C11.4123 11.1474 10.8396 11.168 10.8396 11.168L10.751 11.1327L10.0476 10.5014L9.86296 10.5774C9.87096 10.502 9.91229 10.3327 10.1416 10.366C10.5176 10.42 10.673 10.6267 11.069 10.668L11.181 10.6794L11.1416 10.73C11.203 10.73 11.2936 10.712 11.3603 10.6974L11.4356 10.7047L11.4016 10.8234C11.455 10.8074 11.5323 10.7614 11.5956 10.7207L11.769 10.7374L11.8083 10.792L11.9403 10.726L12.029 10.7174C12.1056 10.762 12.215 10.802 12.215 10.802L12.2356 10.698C12.3296 10.7607 12.4856 10.7607 12.4856 10.7607C12.4676 10.746 12.4496 10.7087 12.431 10.6767L12.527 10.6667C12.923 10.6254 13.0776 10.4187 13.4543 10.3647C13.6836 10.332 13.725 10.5007 13.733 10.576L13.5476 10.5014Z" fill="#BF9300" />
+      <path d="M11.5781 12.9181L11.2028 14.3447L10.5781 14.2201L11.2241 12.3867L11.5781 12.9181ZM12.0441 12.9181L12.4188 14.3447L13.0441 14.2201L12.3981 12.3867L12.0441 12.9181Z" fill="#EEEEEE" />
+      <path d="M11.1719 11.4185C11.1719 11.4185 11.2239 12.0225 11.4945 12.4912V11.2832C11.4945 11.2832 11.3172 11.3872 11.1719 11.4185ZM12.4739 11.4392C12.4739 11.4392 12.4219 12.0432 12.1512 12.5119V11.3039C12.1505 11.3039 12.3279 11.4079 12.4739 11.4392Z" fill="#BF9300" />
+      <path d="M11.2969 9.37559C11.2969 9.37559 11.3695 9.30292 11.5782 9.44826C11.7135 9.54292 11.8335 9.61492 11.8335 9.61492C11.8335 9.61492 11.9189 9.52492 12.0442 9.54559C12.1695 9.56626 12.0995 9.74025 12.1202 10.1043C12.1409 10.4689 12.2869 10.6249 12.2869 10.6249L12.1095 10.5209L12.1202 10.6356L11.9222 10.5416L11.8282 10.6769L11.7342 10.5309L11.5822 10.6236L11.5362 10.4996L11.3589 10.5936C11.3589 10.5936 11.6195 10.2709 11.6402 9.91626C11.6462 9.81026 11.6195 9.57226 11.6195 9.57226C11.6195 9.57226 11.4535 9.36492 11.2969 9.37559Z" fill="#EEEEEE" />
+      <path d="M10.3699 14.7614C10.2506 14.8328 10.2972 14.8761 10.3699 14.9074C10.4426 14.9388 10.8799 14.9914 11.7659 15.0114C12.6719 15.0321 13.2346 14.9281 13.3072 14.8861C13.3799 14.8448 13.3906 14.7714 13.2659 14.7508C13.1406 14.7301 12.5159 14.8341 11.7552 14.8341C10.8179 14.8348 10.4219 14.7301 10.3699 14.7614Z" fill="#BF9300" />
+    </svg>
+
+  );
+}
+
+export function LanguageSwitcher({ className }: { className?: string }) {
   const t = useTranslations("common");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
@@ -16,11 +46,10 @@ export function LanguageSwitcher() {
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
 
+  const nextLocale: Locale = locale === "en" ? "ar" : "en";
   const query = Object.fromEntries(searchParams.entries());
 
-  const switchLocale = (nextLocale: Locale) => {
-    if (nextLocale === locale) return;
-
+  const switchLocale = () => {
     startTransition(() => {
       router.replace(
         { pathname, query: Object.keys(query).length > 0 ? query : undefined },
@@ -30,24 +59,31 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <nav aria-label={t("language.label")} className="inline-flex items-center gap-1">
-      {routing.locales.map((item) => {
-        const isActive = item === locale;
-
-        return (
-          <Button
-            key={item}
-            type="button"
-            size="sm"
-            variant={isActive ? "primary" : "ghost"}
-            aria-current={isActive ? "true" : undefined}
-            disabled={isPending}
-            onClick={() => switchLocale(item)}
-          >
-            <span lang={item}>{t(`language.${item}`)}</span>
-          </Button>
-        );
-      })}
+    <nav aria-label={t("language.label")} className={cn("inline-flex", className)}>
+      <button
+        type="button"
+        disabled={isPending}
+        onClick={switchLocale}
+        aria-label={t("language.switchTo", { language: t(`language.${nextLocale}`) })}
+        title={t(`language.${nextLocale}`)}
+        className={cn(
+          "group inline-flex items-center justify-center rounded-full p-1.5 transition-transform duration-200",
+          "hover:scale-105 hover:bg-background active:scale-95",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+          "disabled:opacity-50 motion-reduce:transition-none motion-reduce:hover:scale-100",
+        )}
+      >
+        <span className="relative size-7 overflow-hidden rounded-full shadow-sm ring-1 ring-border transition-shadow duration-200 group-hover:shadow-md">
+          {nextLocale === "ar" ? (
+            <FlagAr className="size-full object-cover" />
+          ) : (
+            <FlagEn className="size-full object-cover" />
+          )}
+        </span>
+        <span className="sr-only" lang={nextLocale}>
+          {t(`language.${nextLocale}`)}
+        </span>
+      </button>
     </nav>
   );
 }
