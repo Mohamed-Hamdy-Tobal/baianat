@@ -1,8 +1,8 @@
-# BAYAN
+# BAIANAT
 
 Bilingual (English / Arabic) ecommerce storefront built with Next.js App Router.
 
-BAYAN catalogues products and categories from [DummyJSON](https://dummyjson.com), with URL-driven discovery, rich product details, and RTL-ready UI.
+BAIANAT catalogues products and categories from [DummyJSON](https://dummyjson.com), with URL-driven discovery, rich product details, and RTL-ready UI.
 
 ## Tech stack
 
