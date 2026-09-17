@@ -3,18 +3,46 @@
     "heroTitle": "Shop thoughtfully curated essentials",
     "heroDescription": "Discover quality products across electronics, fashion, and more.",
     "shopCategories": "Shop categories",
-    "featuredTitle": "Featured products",
-    "featuredDescription": "A selection from our live catalogue.",
-    "viewAllCategories": "View all categories",
+    "latestTitle": "Latest products",
+    "latestDescription": "Recently updated picks from the catalogue.",
+    "viewAllProducts": "View all products",
     "shopByCategory": "Shop by category",
     "shopByCategoryDescription": "Browse products by collection."
   },
+  "productsPage": {
+    "title": "Products",
+    "description": "Search, filter, and discover the full BAIANAT catalogue.",
+    "count": "{count, plural, =0 {No products} one {# product} other {# products}}",
+    "filters": "Filters",
+    "openFilters": "Open filters",
+    "clearFilters": "Clear filters",
+    "applyFilters": "Apply filters",
+    "searchPlaceholder": "Search products…",
+    "searchLabel": "Search products",
+    "searching": "Updating results…",
+    "categoryFilter": "Category",
+    "allCategories": "All categories",
+    "updatedFilter": "Updated",
+    "updatedAny": "Any time",
+    "updated7d": "Last 7 days",
+    "updated30d": "Last 30 days",
+    "updated90d": "Last 90 days"
+  },
   "sort": {
     "label": "Sort by",
-    "featured": "Featured",
+    "default": "Relevance",
+    "newest": "Newest",
     "priceAsc": "Price: low to high",
     "priceDesc": "Price: high to low",
-    "rating": "Top rated"
+    "ratingDesc": "Top rated",
+    "titleAsc": "Name: A to Z",
+    "titleDesc": "Name: Z to A"
+  },
+  "pagination": {
+    "label": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {page}"
   },
   "rating": {
     "a11y": "{rate} out of 5, {count} ratings"
@@ -27,7 +55,7 @@
   },
   "empty": {
     "title": "No products found",
-    "description": "There are no products to show in this view right now."
+    "description": "Try adjusting your search or filters."
   },
   "errors": {
     "title": "Something went wrong",
@@ -36,11 +64,37 @@
   },
   "product": {
     "description": "Description",
-    "category": "Category"
+    "category": "Category",
+    "brand": "Brand",
+    "sku": "SKU",
+    "stock": "Stock",
+    "availability": "Availability",
+    "weight": "Weight",
+    "dimensions": "Dimensions",
+    "warranty": "Warranty",
+    "shipping": "Shipping",
+    "returns": "Returns",
+    "minOrder": "Minimum order",
+    "barcode": "Barcode",
+    "tags": "Tags",
+    "information": "Product information",
+    "reviews": "Reviews",
+    "related": "Related products",
+    "addToCart": "Add to cart",
+    "wishlist": "Wishlist",
+    "quantity": "Quantity",
+    "outOfStock": "Out of stock",
+    "savePercent": "Save {percent}%",
+    "originalPrice": "Original price",
+    "gallery": "Product images",
+    "noRelated": "No related products right now."
   },
   "categoriesPage": {
     "title": "Categories",
-    "description": "Explore every collection in the BAYAN catalogue."
+    "description": "Explore the collections available across BAIANAT.",
+    "productCount": "{count, plural, =0 {No products} one {# product} other {# products}}",
+    "emptyTitle": "No categories yet",
+    "emptyDescription": "Collections will appear here once the catalogue is available."
   },
   "categoryPage": {
     "productCount": "{count, plural, =0 {No products} one {# product} other {# products}}"

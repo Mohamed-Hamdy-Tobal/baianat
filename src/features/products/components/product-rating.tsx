@@ -5,18 +5,21 @@ import { cn } from "@/lib/utils";
 
 type ProductRatingProps = {
   rate: number;
-  count: number;
+  count?: number;
   className?: string;
+  showCount?: boolean;
 };
 
-export function ProductRating({ rate, count, className }: ProductRatingProps) {
+export function ProductRating({ rate, count = 0, className, showCount = true }: ProductRatingProps) {
   const t = useTranslations("catalogue");
   const filled = Math.round(rate);
 
   return (
     <div
       className={cn("inline-flex items-center gap-1.5 text-sm text-text-secondary", className)}
-      aria-label={t("rating.a11y", { rate, count })}
+      aria-label={showCount ? t("rating.a11y", { rate, count }) : undefined}
+      role={showCount ? undefined : "img"}
+      aria-hidden={showCount ? undefined : true}
     >
       <span className="inline-flex items-center gap-0.5" aria-hidden>
         {Array.from({ length: 5 }, (_, index) => (
@@ -28,7 +31,7 @@ export function ProductRating({ rate, count, className }: ProductRatingProps) {
       </span>
       <span aria-hidden className="tabular-nums">
         {rate.toFixed(1)}
-        <span className="text-text-muted"> ({count})</span>
+        {showCount ? <span className="text-text-muted"> ({count})</span> : null}
       </span>
     </div>
   );

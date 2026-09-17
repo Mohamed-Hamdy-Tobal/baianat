@@ -3,18 +3,46 @@
     "heroTitle": "تسوق أساسيات مختارة بعناية",
     "heroDescription": "اكتشف منتجات عالية الجودة في الإلكترونيات والأزياء والمزيد.",
     "shopCategories": "تسوق الفئات",
-    "featuredTitle": "منتجات مميزة",
-    "featuredDescription": "مجموعة من كتالوجنا المباشر.",
-    "viewAllCategories": "عرض كل الفئات",
+    "latestTitle": "أحدث المنتجات",
+    "latestDescription": "اختيارات محدّثة مؤخراً من الكتالوج.",
+    "viewAllProducts": "عرض كل المنتجات",
     "shopByCategory": "تسوق حسب الفئة",
     "shopByCategoryDescription": "تصفح المنتجات حسب المجموعة."
   },
+  "productsPage": {
+    "title": "المنتجات",
+    "description": "ابحث وصفِّ واكتشف كتالوج بيان بالكامل.",
+    "count": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجاً} other {# منتج}}",
+    "filters": "عوامل التصفية",
+    "openFilters": "فتح عوامل التصفية",
+    "clearFilters": "مسح عوامل التصفية",
+    "applyFilters": "تطبيق",
+    "searchPlaceholder": "ابحث عن منتجات…",
+    "searchLabel": "البحث عن المنتجات",
+    "searching": "جارٍ تحديث النتائج…",
+    "categoryFilter": "الفئة",
+    "allCategories": "كل الفئات",
+    "updatedFilter": "آخر تحديث",
+    "updatedAny": "أي وقت",
+    "updated7d": "آخر 7 أيام",
+    "updated30d": "آخر 30 يوماً",
+    "updated90d": "آخر 90 يوماً"
+  },
   "sort": {
     "label": "ترتيب حسب",
-    "featured": "مميز",
+    "default": "الأكثر صلة",
+    "newest": "الأحدث",
     "priceAsc": "السعر: من الأقل إلى الأعلى",
     "priceDesc": "السعر: من الأعلى إلى الأقل",
-    "rating": "الأعلى تقييماً"
+    "ratingDesc": "الأعلى تقييماً",
+    "titleAsc": "الاسم: أ إلى ي",
+    "titleDesc": "الاسم: ي إلى أ"
+  },
+  "pagination": {
+    "label": "ترقيم الصفحات",
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة {page}"
   },
   "rating": {
     "a11y": "{rate} من 5، {count} تقييمات"
@@ -27,7 +55,7 @@
   },
   "empty": {
     "title": "لا توجد منتجات",
-    "description": "لا توجد منتجات لعرضها في هذا العرض حالياً."
+    "description": "جرّب تعديل البحث أو عوامل التصفية."
   },
   "errors": {
     "title": "حدث خطأ ما",
@@ -36,11 +64,37 @@
   },
   "product": {
     "description": "الوصف",
-    "category": "الفئة"
+    "category": "الفئة",
+    "brand": "العلامة التجارية",
+    "sku": "رمز المنتج",
+    "stock": "المخزون",
+    "availability": "التوفر",
+    "weight": "الوزن",
+    "dimensions": "الأبعاد",
+    "warranty": "الضمان",
+    "shipping": "الشحن",
+    "returns": "الإرجاع",
+    "minOrder": "الحد الأدنى للطلب",
+    "barcode": "الباركود",
+    "tags": "الوسوم",
+    "information": "معلومات المنتج",
+    "reviews": "التقييمات",
+    "related": "منتجات ذات صلة",
+    "addToCart": "أضف إلى السلة",
+    "wishlist": "المفضلة",
+    "quantity": "الكمية",
+    "outOfStock": "غير متوفر",
+    "savePercent": "وفّر {percent}%",
+    "originalPrice": "السعر الأصلي",
+    "gallery": "صور المنتج",
+    "noRelated": "لا توجد منتجات ذات صلة حالياً."
   },
   "categoriesPage": {
     "title": "الفئات",
-    "description": "استكشف كل المجموعات في كتالوج بيان."
+    "description": "استكشف المجموعات المتاحة عبر بيان.",
+    "productCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجاً} other {# منتج}}",
+    "emptyTitle": "لا توجد فئات بعد",
+    "emptyDescription": "ستظهر المجموعات هنا عند توفر الكتالوج."
   },
   "categoryPage": {
     "productCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجاً} other {# منتج}}"

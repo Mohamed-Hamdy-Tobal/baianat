@@ -4,45 +4,56 @@ import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 
-import { PRODUCT_SORT_VALUES, type ProductSort } from "@/features/products/utils/sort-products";
+import {
+  parseProductSearchParams,
+  PRODUCT_SORT_OPTIONS,
+  serializeProductSearchParams,
+  type ProductSortOption,
+} from "@/features/products/utils/product-query";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-const SORT_LABEL_KEYS: Record<ProductSort, "featured" | "priceAsc" | "priceDesc" | "rating"> = {
-  featured: "featured",
+const SORT_LABEL: Record<ProductSortOption, string> = {
+  default: "default",
+  newest: "newest",
   "price-asc": "priceAsc",
   "price-desc": "priceDesc",
-  rating: "rating",
+  "rating-desc": "ratingDesc",
+  "title-asc": "titleAsc",
+  "title-desc": "titleDesc",
 };
 
 type ProductSortSelectProps = {
   className?: string;
+  lockedCategory?: string;
 };
 
-export function ProductSortSelect({ className }: ProductSortSelectProps) {
+export function ProductSortSelect({ className, lockedCategory }: ProductSortSelectProps) {
   const t = useTranslations("catalogue");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
-
-  const current = (PRODUCT_SORT_VALUES.includes(searchParams.get("sort") as ProductSort)
-    ? searchParams.get("sort")
-    : "featured") as ProductSort;
+  const query = {
+    ...parseProductSearchParams(Object.fromEntries(searchParams.entries())),
+    ...(lockedCategory ? { category: lockedCategory } : {}),
+  };
 
   const onChange = (value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (value === "featured") {
-      params.delete("sort");
-    } else {
-      params.set("sort", value);
-    }
-
-    const query = Object.fromEntries(params.entries());
+    const sort = PRODUCT_SORT_OPTIONS.includes(value as ProductSortOption)
+      ? (value as ProductSortOption)
+      : "default";
 
     startTransition(() => {
-      router.replace({ pathname, query: Object.keys(query).length > 0 ? query : undefined });
+      router.replace({
+        pathname,
+        query: serializeProductSearchParams({
+          ...query,
+          sort,
+          page: 1,
+          ...(lockedCategory ? { category: lockedCategory } : {}),
+        }),
+      });
     });
   };
 
@@ -50,7 +61,7 @@ export function ProductSortSelect({ className }: ProductSortSelectProps) {
     <label className={cn("inline-flex items-center gap-2 text-sm text-text-secondary", className)}>
       <span className="whitespace-nowrap">{t("sort.label")}</span>
       <select
-        value={current}
+        value={query.sort}
         disabled={isPending}
         onChange={(event) => onChange(event.target.value)}
         className={cn(
@@ -59,9 +70,9 @@ export function ProductSortSelect({ className }: ProductSortSelectProps) {
           "disabled:opacity-50",
         )}
       >
-        {PRODUCT_SORT_VALUES.map((value) => (
+        {PRODUCT_SORT_OPTIONS.map((value) => (
           <option key={value} value={value}>
-            {t(`sort.${SORT_LABEL_KEYS[value]}`)}
+            {t(`sort.${SORT_LABEL[value]}`)}
           </option>
         ))}
       </select>

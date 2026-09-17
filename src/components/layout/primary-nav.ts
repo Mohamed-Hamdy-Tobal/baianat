@@ -1,5 +1,6 @@
 export const PRIMARY_NAV = [
   { href: "/", key: "home" },
+  { href: "/products", key: "products" },
   { href: "/categories", key: "categories" },
   { href: "/about", key: "about" },
   { href: "/contact", key: "contact" },
