@@ -1,5 +1,37 @@
 {
-  "title": "BAYAN",
+  "title": "BAIANAT",
   "subtitle": "Modern bilingual shopping",
-  "description": "Quality products across electronics, fashion, and everyday essentials."
+  "description": "Quality products across electronics, fashion, and everyday essentials.",
+  "banner": {
+    "carouselLabel": "Promotional banners",
+    "previous": "Previous slide",
+    "next": "Next slide",
+    "goToSlide": "Go to slide {slide}",
+    "slides": {
+      "beauty": {
+        "title": "Beauty & self-care",
+        "description": "Skincare, fragrances, and everyday essentials from our beauty aisle.",
+        "cta": "Browse categories",
+        "alt": "Beauty and skincare products arranged on a clean surface"
+      },
+      "tech": {
+        "title": "Phones, laptops & more",
+        "description": "Smartphones, accessories, and gadgets ready for your next upgrade.",
+        "cta": "Shop products",
+        "alt": "Modern smartphone and tech accessories on a desk"
+      },
+      "fashion": {
+        "title": "Fashion for every wardrobe",
+        "description": "Shirts, shoes, watches, bags, and accessories for men and women.",
+        "cta": "Explore fashion",
+        "alt": "Clothing rack with contemporary fashion pieces"
+      },
+      "home": {
+        "title": "Home, kitchen & living",
+        "description": "Furniture, décor, and kitchen finds for a more comfortable space.",
+        "cta": "Shop home",
+        "alt": "Modern living room with furniture and home décor"
+      }
+    }
+  }
 }
