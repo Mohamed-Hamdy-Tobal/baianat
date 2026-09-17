@@ -8,12 +8,13 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "fakestoreapi.com",
+        hostname: "cdn.dummyjson.com",
         pathname: "/**",
       },
     ],
   },
   experimental: {
+    cpus: 1,
     globalNotFound: true,
   },
 };

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  FAKE_STORE_API_URL: z.url().default("https://fakestoreapi.com"),
+  PRODUCTS_API_URL: z.url().default("https://dummyjson.com"),
   NEXT_PUBLIC_SITE_URL: z.url().default("http://localhost:3000"),
 });
 
@@ -9,7 +9,7 @@ export type Env = z.infer<typeof envSchema>;
 
 function readEnv(): Env {
   const parsed = envSchema.safeParse({
-    FAKE_STORE_API_URL: process.env.FAKE_STORE_API_URL,
+    PRODUCTS_API_URL: process.env.PRODUCTS_API_URL,
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   });
 

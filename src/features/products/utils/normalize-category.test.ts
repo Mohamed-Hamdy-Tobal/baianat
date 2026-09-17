@@ -1,39 +1,50 @@
 import { describe, expect, it } from "vitest";
 
-import { normalizeCategory } from "./normalize-category";
+import { normalizeCategory, normalizeCategoryDto, slugToMessageKey } from "./normalize-category";
+
+describe("slugToMessageKey", () => {
+  it("camelCases hyphenated slugs", () => {
+    expect(slugToMessageKey("mens-shirts")).toBe("mensShirts");
+    expect(slugToMessageKey("home-decoration")).toBe("homeDecoration");
+    expect(slugToMessageKey("beauty")).toBe("beauty");
+  });
+});
 
 describe("normalizeCategory", () => {
-  it("maps all known FakeStore categories", () => {
-    expect(normalizeCategory("electronics")).toEqual({
-      apiValue: "electronics",
-      slug: "electronics",
-      labelKey: "categories.electronics",
+  it("maps DummyJSON product category strings", () => {
+    expect(normalizeCategory("smartphones")).toEqual({
+      apiValue: "smartphones",
+      slug: "smartphones",
+      labelKey: "categories.smartphones",
     });
 
-    expect(normalizeCategory("jewelery")).toEqual({
-      apiValue: "jewelery",
-      slug: "jewelery",
-      labelKey: "categories.jewelery",
-    });
-
-    expect(normalizeCategory("men's clothing")).toEqual({
-      apiValue: "men's clothing",
-      slug: "mens-clothing",
-      labelKey: "categories.mensClothing",
-    });
-
-    expect(normalizeCategory("women's clothing")).toEqual({
-      apiValue: "women's clothing",
-      slug: "womens-clothing",
-      labelKey: "categories.womensClothing",
+    expect(normalizeCategory("womens-jewellery")).toEqual({
+      apiValue: "womens-jewellery",
+      slug: "womens-jewellery",
+      labelKey: "categories.womensJewellery",
     });
   });
 
-  it("preserves apiValue for unknown categories and builds a safe fallback", () => {
-    expect(normalizeCategory("home & garden")).toEqual({
-      apiValue: "home & garden",
+  it("builds a safe fallback for unknown values", () => {
+    expect(normalizeCategory("Home & Garden")).toEqual({
+      apiValue: "Home & Garden",
       slug: "home-garden",
-      labelKey: "categories.home-garden",
+      labelKey: "categories.homeGarden",
+    });
+  });
+});
+
+describe("normalizeCategoryDto", () => {
+  it("maps DummyJSON category list DTOs", () => {
+    expect(
+      normalizeCategoryDto({
+        slug: "kitchen-accessories",
+        name: "Kitchen Accessories",
+      }),
+    ).toEqual({
+      apiValue: "kitchen-accessories",
+      slug: "kitchen-accessories",
+      labelKey: "categories.kitchenAccessories",
     });
   });
 });

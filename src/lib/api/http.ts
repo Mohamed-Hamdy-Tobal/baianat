@@ -26,7 +26,7 @@ function joinUrl(base: string, path: string): string {
 
 export async function request<T>(path: string, options: RequestOptions<T> = {}): Promise<T> {
   const { schema, timeoutMs = DEFAULT_TIMEOUT_MS, signal: userSignal, ...init } = options;
-  const url = joinUrl(env.FAKE_STORE_API_URL, path);
+  const url = joinUrl(env.PRODUCTS_API_URL, path);
   const timeoutSignal = AbortSignal.timeout(timeoutMs);
   const signal = userSignal ? AbortSignal.any([userSignal, timeoutSignal]) : timeoutSignal;
 

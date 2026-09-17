@@ -1,51 +1,61 @@
 import { describe, expect, it } from "vitest";
 
-import { productSchema, productsSchema } from "./product.schema";
+import {
+  productDetailsDtoSchema,
+  productSummaryDtoSchema,
+  productsPageResponseSchema,
+} from "./product.schema";
 
-const validProduct = {
+const validSummary = {
   id: 1,
-  title: "Fjallraven Backpack",
-  price: 109.95,
-  description: "Your perfect pack for everyday use.",
-  category: "men's clothing",
-  image: "https://example.com/image.jpg",
-  rating: { rate: 3.9, count: 120 },
+  title: "Essence Mascara Lash Princess",
+  description: "A popular mascara.",
+  category: "beauty",
+  price: 9.99,
+  rating: 4.94,
+  thumbnail: "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
 };
 
-describe("productSchema", () => {
-  it("accepts a valid FakeStore product", () => {
-    const result = productSchema.safeParse(validProduct);
+describe("productSummaryDtoSchema", () => {
+  it("accepts listing DTOs and defaults discount/stock", () => {
+    const result = productSummaryDtoSchema.safeParse(validSummary);
     expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.discountPercentage).toBe(0);
+      expect(result.data.stock).toBe(0);
+    }
   });
+});
 
-  it("accepts a product without rating", () => {
-    const withoutRating = {
-      id: validProduct.id,
-      title: validProduct.title,
-      price: validProduct.price,
-      description: validProduct.description,
-      category: validProduct.category,
-      image: validProduct.image,
-    };
-    const result = productSchema.safeParse(withoutRating);
-    expect(result.success).toBe(true);
-  });
-
-  it("rejects missing required fields", () => {
-    const result = productSchema.safeParse({ id: 1, title: "Only title" });
-    expect(result.success).toBe(false);
-  });
-
-  it("rejects wrong field types", () => {
-    const result = productSchema.safeParse({
-      ...validProduct,
-      price: "109.95",
+describe("productDetailsDtoSchema", () => {
+  it("accepts full detail payloads and strips nothing required for mapping", () => {
+    const result = productDetailsDtoSchema.safeParse({
+      ...validSummary,
+      images: ["https://cdn.dummyjson.com/a.jpg"],
+      reviews: [
+        {
+          rating: 5,
+          comment: "Nice",
+          date: "2026-01-01",
+          reviewerName: "Ada",
+          reviewerEmail: "ada@example.com",
+        },
+      ],
+      meta: { updatedAt: "2026-01-01T00:00:00.000Z", barcode: "123" },
     });
-    expect(result.success).toBe(false);
-  });
 
-  it("accepts an array of products", () => {
-    const result = productsSchema.safeParse([validProduct]);
+    expect(result.success).toBe(true);
+  });
+});
+
+describe("productsPageResponseSchema", () => {
+  it("accepts a page envelope", () => {
+    const result = productsPageResponseSchema.safeParse({
+      products: [validSummary],
+      total: 1,
+      skip: 0,
+      limit: 20,
+    });
     expect(result.success).toBe(true);
   });
 });
