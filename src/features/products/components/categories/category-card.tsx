@@ -15,7 +15,7 @@ type CategoryCardProps = {
 export function CategoryCard({ category, name, countLabel, className }: CategoryCardProps) {
   return (
     <Link
-      href={{ pathname: "/products", query: { category: category.apiValue } }}
+      href={`/categories/${category.slug}`}
       aria-label={`${name}. ${countLabel}`}
       className={cn(
         "group relative flex aspect-[4/3] overflow-hidden rounded-xl border border-border bg-surface shadow-sm",

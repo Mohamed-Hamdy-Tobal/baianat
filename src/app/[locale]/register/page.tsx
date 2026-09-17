@@ -6,6 +6,7 @@ import { MainContainer } from "@/components/layout/main-container";
 import { Skeleton } from "@/components/ui/skeleton";
 import { GuestOnly } from "@/features/auth/components/guest-only";
 import { RegisterForm } from "@/features/auth/components/register-form";
+import { privatePageMetadata } from "@/lib/seo";
 
 type RegisterPageProps = {
   params: Promise<{ locale: string }>;
@@ -15,11 +16,10 @@ export async function generateMetadata({ params }: RegisterPageProps): Promise<M
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "auth" });
 
-  return {
+  return privatePageMetadata({
     title: t("register.title"),
     description: t("register.subtitle"),
-    robots: { index: false, follow: false },
-  };
+  });
 }
 
 export default async function RegisterPage() {
@@ -44,7 +44,7 @@ export default async function RegisterPage() {
                 </div>
               }
             >
-              <GuestOnly allowRedirectParam={false}>
+              <GuestOnly>
                 <RegisterForm />
               </GuestOnly>
             </Suspense>

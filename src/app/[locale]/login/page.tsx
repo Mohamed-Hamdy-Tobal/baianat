@@ -6,6 +6,7 @@ import { MainContainer } from "@/components/layout/main-container";
 import { Skeleton } from "@/components/ui/skeleton";
 import { GuestOnly } from "@/features/auth/components/guest-only";
 import { LoginForm } from "@/features/auth/components/login-form";
+import { privatePageMetadata } from "@/lib/seo";
 
 type LoginPageProps = {
   params: Promise<{ locale: string }>;
@@ -15,11 +16,10 @@ export async function generateMetadata({ params }: LoginPageProps): Promise<Meta
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "auth" });
 
-  return {
+  return privatePageMetadata({
     title: t("login.title"),
     description: t("login.subtitle"),
-    robots: { index: false, follow: false },
-  };
+  });
 }
 
 export default async function LoginPage() {

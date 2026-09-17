@@ -17,6 +17,7 @@ const namespaces = [
   "wishlist",
   "auth",
   "checkout",
+  "seo",
 ] as const;
 
 async function loadMessages(locale: Locale) {

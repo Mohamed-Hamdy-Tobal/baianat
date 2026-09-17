@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import { MainContainer } from "@/components/layout/main-container";
 import { WishlistView } from "@/features/wishlist/components/wishlist-view";
+import { privatePageMetadata } from "@/lib/seo";
 
 type WishlistPageProps = {
   params: Promise<{ locale: string }>;
@@ -12,11 +13,10 @@ export async function generateMetadata({ params }: WishlistPageProps): Promise<M
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "wishlist" });
 
-  return {
+  return privatePageMetadata({
     title: t("title"),
     description: t("subtitle"),
-    robots: { index: false, follow: false },
-  };
+  });
 }
 
 export default async function WishlistPage() {

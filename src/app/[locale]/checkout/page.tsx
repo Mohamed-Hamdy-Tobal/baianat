@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { MainContainer } from "@/components/layout/main-container";
 import { AuthGuard } from "@/features/auth/components/auth-guard";
 import { CheckoutView } from "@/features/checkout/components/checkout-view";
+import { privatePageMetadata } from "@/lib/seo";
 
 type CheckoutPageProps = {
   params: Promise<{ locale: string }>;
@@ -13,11 +14,10 @@ export async function generateMetadata({ params }: CheckoutPageProps): Promise<M
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "checkout" });
 
-  return {
+  return privatePageMetadata({
     title: t("title"),
     description: t("subtitle"),
-    robots: { index: false, follow: false },
-  };
+  });
 }
 
 export default async function CheckoutPage() {

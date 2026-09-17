@@ -1,8 +1,28 @@
-import { MainContainer } from "@/components/layout/main-container";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 
-export default function AboutPage() {
-  const t = useTranslations("pages.about");
+import { MainContainer } from "@/components/layout/main-container";
+import { publicPageMetadata } from "@/lib/seo";
+
+type AboutPageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo" });
+
+  return publicPageMetadata({
+    locale,
+    pathname: "/about",
+    title: t("about.title"),
+    description: t("about.description"),
+    siteName: t("siteName"),
+  });
+}
+
+export default async function AboutPage() {
+  const t = await getTranslations("pages.about");
 
   return (
     <div>

@@ -1,8 +1,28 @@
-import { MainContainer } from "@/components/layout/main-container";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 
-export default function ContactPage() {
-  const t = useTranslations("pages.contact");
+import { MainContainer } from "@/components/layout/main-container";
+import { publicPageMetadata } from "@/lib/seo";
+
+type ContactPageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo" });
+
+  return publicPageMetadata({
+    locale,
+    pathname: "/contact",
+    title: t("contact.title"),
+    description: t("contact.description"),
+    siteName: t("siteName"),
+  });
+}
+
+export default async function ContactPage() {
+  const t = await getTranslations("pages.contact");
 
   return (
     <div>

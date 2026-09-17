@@ -18,6 +18,8 @@ type ProductCatalogueViewProps = {
   description?: string;
   breadcrumbLabel?: string;
   lockedCategory?: string;
+  /** Category pages use Home → Categories → Category. */
+  breadcrumbVariant?: "products" | "category";
 };
 
 export async function ProductCatalogueView({
@@ -26,19 +28,27 @@ export async function ProductCatalogueView({
   description,
   breadcrumbLabel,
   lockedCategory,
+  breadcrumbVariant = "products",
 }: ProductCatalogueViewProps) {
   const t = await getTranslations("catalogue");
   const [page, categories] = await Promise.all([getProductPage(query), getCategories()]);
 
-  return (
-    <div className="flex flex-col gap-8 py-2">
-      <Breadcrumbs
-        items={[
+  const breadcrumbItems =
+    breadcrumbVariant === "category"
+      ? [
+          { label: t("breadcrumbs.home"), href: "/" },
+          { label: t("breadcrumbs.categories"), href: "/categories" },
+          ...(breadcrumbLabel ? [{ label: breadcrumbLabel }] : []),
+        ]
+      : [
           { label: t("breadcrumbs.home"), href: "/" },
           { label: t("breadcrumbs.products"), href: "/products" },
           ...(breadcrumbLabel ? [{ label: breadcrumbLabel }] : []),
-        ]}
-      />
+        ];
+
+  return (
+    <div className="flex flex-col gap-8 py-2">
+      <Breadcrumbs items={breadcrumbItems} />
 
       <header className="flex flex-col gap-4 border-b border-border pb-6">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">

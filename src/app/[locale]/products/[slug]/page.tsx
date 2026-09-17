@@ -23,9 +23,7 @@ import {
 } from "@/features/products";
 import { Link, redirect } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { absoluteUrl } from "@/lib/seo/absolute-url";
-import { breadcrumbJsonLd, productJsonLd } from "@/lib/seo/json-ld";
-import { JsonLd } from "@/lib/seo/json-ld-script";
+import { breadcrumbJsonLd, JsonLd, productJsonLd, productPageMetadata } from "@/lib/seo";
 import { MainContainer } from "@/components/layout/main-container";
 
 type ProductPageProps = {
@@ -56,20 +54,13 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   try {
     const product = await getProductById(id);
-    const description = product.description.slice(0, 160);
-    const url = absoluteUrl(`/${localeParam}/products/${product.slug}`);
+    const t = await getTranslations({ locale: localeParam, namespace: "seo" });
 
-    return {
-      title: product.title,
-      description,
-      alternates: { canonical: url },
-      openGraph: {
-        title: product.title,
-        description,
-        url,
-        images: product.images[0] ? [{ url: product.images[0] }] : undefined,
-      },
-    };
+    return productPageMetadata({
+      locale: localeParam,
+      product,
+      siteName: t("siteName"),
+    });
   } catch {
     return {};
   }

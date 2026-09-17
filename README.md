@@ -19,6 +19,7 @@ BAIANAT catalogues products and categories from [DummyJSON](https://dummyjson.co
 - Product catalogue with search, sort, category and updated filters, pagination
 - Image-driven categories showcase with product counts
 - Product detail page: gallery, specs, reviews, related products, JSON-LD SEO
+- Locale-aware metadata, canonical URLs, hreflang, sitemap.xml, and robots.txt
 - Sticky app shell with locale flag switcher and mobile navigation
 - Cart and wishlist (guest, client-side)
 - Demo authentication (login / logout) required only for checkout access

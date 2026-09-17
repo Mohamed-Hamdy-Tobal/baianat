@@ -1,0 +1,29 @@
+{
+  "siteName": "BAIANAT",
+  "titleTemplate": "%s — BAIANAT",
+  "defaultDescription": "BAIANAT e-commerce — modern bilingual shopping across electronics, fashion, and everyday essentials.",
+  "home": {
+    "title": "BAIANAT — Thoughtfully Curated Essentials",
+    "description": "Discover quality products across electronics, fashion, beauty, and home — thoughtfully curated for everyday living."
+  },
+  "products": {
+    "title": "Shop All Products",
+    "description": "Browse the full BAIANAT catalogue. Search, filter, and discover electronics, fashion, beauty, and more."
+  },
+  "categories": {
+    "title": "Shop by Category",
+    "description": "Explore every collection in the BAIANAT catalogue — from beauty and fashion to tech and home."
+  },
+  "category": {
+    "title": "{category}",
+    "description": "Shop {category} at BAIANAT. Browse curated products in this collection."
+  },
+  "about": {
+    "title": "About",
+    "description": "Learn more about BAIANAT. This page will be expanded in a later phase."
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Get in touch with BAIANAT. The contact form will arrive in a later phase."
+  }
+}

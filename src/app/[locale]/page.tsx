@@ -1,5 +1,7 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { connection } from "next/server";
+import type { Metadata } from "next";
+
 import { Button } from "@/components/ui/button";
 import { MainContainer } from "@/components/layout/main-container";
 import { ProductGrid } from "@/features/products/components/product-grid";
@@ -7,6 +9,25 @@ import { getLatestProducts } from "@/features/products";
 import { getHomeBanners } from "@/features/home/api/banners.api";
 import { HomeBannerSlider } from "@/features/home";
 import { Link } from "@/i18n/navigation";
+import { publicPageMetadata } from "@/lib/seo";
+
+type HomePageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo" });
+
+  return publicPageMetadata({
+    locale,
+    pathname: "/",
+    title: t("home.title"),
+    description: t("home.description"),
+    absoluteTitle: true,
+    siteName: t("siteName"),
+  });
+}
 
 export default async function HomePage() {
   await connection();
@@ -37,8 +58,6 @@ export default async function HomePage() {
           </div>
           <ProductGrid products={latest} className="xl:grid-cols-4" />
         </section>
-
-
       </MainContainer>
     </div>
   );

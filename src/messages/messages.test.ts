@@ -10,6 +10,7 @@ import arErrors from "./ar/errors.json";
 import arHome from "./ar/home.json";
 import arNavigation from "./ar/navigation.json";
 import arPages from "./ar/pages.json";
+import arSeo from "./ar/seo.json";
 import arWishlist from "./ar/wishlist.json";
 import enAuth from "./en/auth.json";
 import enCatalogue from "./en/catalogue.json";
@@ -21,6 +22,7 @@ import enErrors from "./en/errors.json";
 import enHome from "./en/home.json";
 import enNavigation from "./en/navigation.json";
 import enPages from "./en/pages.json";
+import enSeo from "./en/seo.json";
 import enWishlist from "./en/wishlist.json";
 
 type MessageTree = string | { [key: string]: MessageTree };
@@ -48,6 +50,7 @@ const namespaces = {
   wishlist: { en: enWishlist, ar: arWishlist },
   auth: { en: enAuth, ar: arAuth },
   checkout: { en: enCheckout, ar: arCheckout },
+  seo: { en: enSeo, ar: arSeo },
 } as const;
 
 describe("messages", () => {
