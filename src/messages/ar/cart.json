@@ -18,7 +18,6 @@
   "removeItem": "إزالة {title} من السلة",
   "clear": "إفراغ السلة",
   "checkout": "متابعة الدفع",
-  "checkoutUnavailable": "الدفع سيكون متاحًا قريبًا",
   "decreaseQuantity": "تقليل الكمية",
   "increaseQuantity": "زيادة الكمية",
   "headerCount": "السلة، {count, plural, one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجًا} other {# منتج}}"

@@ -22,6 +22,7 @@ BAIANAT catalogues products and categories from [DummyJSON](https://dummyjson.co
 - Sticky app shell with locale flag switcher and mobile navigation
 - Cart and wishlist (guest, client-side)
 - Demo authentication (login / logout) required only for checkout access
+- Demo checkout with simulated payment and local order confirmation
 
 ## Getting started
 
@@ -56,7 +57,7 @@ npm run lint     # ESLint
 
 ## Architecture notes
 
-- Feature modules under `src/features/` (products, home, cart, wishlist, auth)
+- Feature modules under `src/features/` (products, home, cart, wishlist, auth, checkout)
 - External HTTP goes through `src/lib/api/http.ts` with Zod schemas and mappers into domain types
 - Listing state is driven by URL search params (`ProductQuery`)
 - UI never consumes raw DummyJSON DTOs
@@ -69,3 +70,12 @@ Authentication is a **client-side demo session** backed by DummyJSON `POST /auth
 - Checkout requires a signed-in session (client-side `AuthGuard`)
 - Registration UI is present but intentionally not connected to a real account backend (DummyJSON does not persist new users)
 - Demo login: any user from [DummyJSON users](https://dummyjson.com/users), e.g. username `emilys` / password `emilyspass`
+
+## Checkout (demo scope)
+
+Checkout is a **local demo flow**:
+
+- Shipping and payment UI are client-side only
+- Payment methods are simulated (no Stripe, PayPal, or card data collection)
+- Placed orders are stored as a lightweight latest-order snapshot in localStorage
+- There is no real payment gateway or backend order persistence

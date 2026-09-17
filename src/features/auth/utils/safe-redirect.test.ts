@@ -25,6 +25,7 @@ describe("getSafeRedirect", () => {
   it("preserves locale checkout redirects", () => {
     expect(getSafeRedirect("/en/checkout", "en")).toBe("/en/checkout");
     expect(getSafeRedirect("/ar/checkout", "ar")).toBe("/ar/checkout");
+    expect(getSafeRedirect("/en/checkout/success", "en")).toBe("/en/checkout/success");
   });
 
   it("prefixes locale-stripped paths with the current locale", () => {

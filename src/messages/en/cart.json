@@ -18,7 +18,6 @@
   "removeItem": "Remove {title} from cart",
   "clear": "Clear cart",
   "checkout": "Proceed to checkout",
-  "checkoutUnavailable": "Checkout will be available soon",
   "decreaseQuantity": "Decrease quantity",
   "increaseQuantity": "Increase quantity",
   "headerCount": "Cart, {count, plural, one {# item} other {# items}}"

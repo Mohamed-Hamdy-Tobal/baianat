@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import { MainContainer } from "@/components/layout/main-container";
 import { AuthGuard } from "@/features/auth/components/auth-guard";
+import { CheckoutView } from "@/features/checkout/components/checkout-view";
 
 type CheckoutPageProps = {
   params: Promise<{ locale: string }>;
@@ -10,34 +11,28 @@ type CheckoutPageProps = {
 
 export async function generateMetadata({ params }: CheckoutPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "auth" });
+  const t = await getTranslations({ locale, namespace: "checkout" });
 
   return {
-    title: t("checkout.title"),
-    description: t("checkout.subtitle"),
+    title: t("title"),
+    description: t("subtitle"),
     robots: { index: false, follow: false },
   };
 }
 
-/**
- * Temporary auth-test placeholder for Phase 08.
- * Not Checkout — only verifies AuthGuard + login redirect.
- */
 export default async function CheckoutPage() {
-  const t = await getTranslations("auth");
+  const t = await getTranslations("checkout");
 
   return (
     <div>
       <MainContainer>
         <AuthGuard>
-          <div className="mx-auto flex w-full max-w-lg flex-col gap-3 py-2">
+          <div className="flex flex-col gap-6 py-2">
             <header className="flex flex-col gap-1">
-              <h1 className="text-2xl font-semibold tracking-tight text-text">{t("checkout.title")}</h1>
-              <p className="text-sm text-text-secondary">{t("checkout.subtitle")}</p>
+              <h1 className="text-2xl font-semibold tracking-tight text-text">{t("title")}</h1>
+              <p className="text-sm text-text-secondary">{t("subtitle")}</p>
             </header>
-            <p className="rounded-lg border border-border bg-surface p-5 text-sm text-text-secondary">
-              {t("checkout.placeholder")}
-            </p>
+            <CheckoutView />
           </div>
         </AuthGuard>
       </MainContainer>

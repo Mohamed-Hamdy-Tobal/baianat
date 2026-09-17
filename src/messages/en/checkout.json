@@ -1,0 +1,60 @@
+{
+  "title": "Checkout",
+  "subtitle": "Complete your order",
+  "shipping": {
+    "title": "Shipping information"
+  },
+  "fields": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "postalCode": "Postal code"
+  },
+  "payment": {
+    "title": "Payment method",
+    "card": "Credit / debit card",
+    "cashOnDelivery": "Cash on delivery",
+    "simulated": "Payment processing is simulated for this demo."
+  },
+  "summary": {
+    "title": "Order summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "quantity": "× {count}",
+    "unitPrice": "{price} each"
+  },
+  "placeOrder": "Place order",
+  "processing": "Processing order…",
+  "empty": {
+    "title": "Your cart is empty",
+    "description": "Add products to your cart before checking out.",
+    "cta": "Continue shopping"
+  },
+  "success": {
+    "title": "Order confirmed",
+    "thankYou": "Thank you for your order.",
+    "placed": "Your order {orderId} has been placed successfully.",
+    "orderNumber": "Order number",
+    "orderTotal": "Order total",
+    "shipping": "Shipping",
+    "free": "Free",
+    "continue": "Continue shopping",
+    "missingTitle": "No order to display",
+    "missingDescription": "There is no recent demo order on this device.",
+    "items": "Items"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Enter a valid email address"
+  },
+  "errors": {
+    "unknown": "Something went wrong. Please try again.",
+    "unauthenticated": "Please sign in to place your order."
+  }
+}

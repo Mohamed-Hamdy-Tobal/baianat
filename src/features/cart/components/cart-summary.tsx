@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { getCartItemCount, getCartSubtotal } from "@/features/cart/utils/cart-calculations";
 import { useCartStore } from "@/features/cart/store/cart.store";
 import { formatPrice } from "@/features/products/utils/format-price";
+import { Link } from "@/i18n/navigation";
 
 export function CartSummary() {
   const t = useTranslations("cart");
@@ -31,8 +32,8 @@ export function CartSummary() {
       </dl>
 
       <div className="mt-4 flex flex-col gap-3">
-        <Button type="button" className="w-full" disabled title={t("checkoutUnavailable")}>
-          {t("checkout")}
+        <Button asChild className="w-full">
+          <Link href="/checkout">{t("checkout")}</Link>
         </Button>
         <Button type="button" variant="ghost" className="w-full text-text-secondary" onClick={() => clearCart()}>
           {t("clear")}

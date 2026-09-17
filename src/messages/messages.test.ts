@@ -4,6 +4,7 @@ import arAuth from "./ar/auth.json";
 import arCatalogue from "./ar/catalogue.json";
 import arCart from "./ar/cart.json";
 import arCategories from "./ar/categories.json";
+import arCheckout from "./ar/checkout.json";
 import arCommon from "./ar/common.json";
 import arErrors from "./ar/errors.json";
 import arHome from "./ar/home.json";
@@ -14,6 +15,7 @@ import enAuth from "./en/auth.json";
 import enCatalogue from "./en/catalogue.json";
 import enCart from "./en/cart.json";
 import enCategories from "./en/categories.json";
+import enCheckout from "./en/checkout.json";
 import enCommon from "./en/common.json";
 import enErrors from "./en/errors.json";
 import enHome from "./en/home.json";
@@ -45,6 +47,7 @@ const namespaces = {
   cart: { en: enCart, ar: arCart },
   wishlist: { en: enWishlist, ar: arWishlist },
   auth: { en: enAuth, ar: arAuth },
+  checkout: { en: enCheckout, ar: arCheckout },
 } as const;
 
 describe("messages", () => {

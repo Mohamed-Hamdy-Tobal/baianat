@@ -15,7 +15,7 @@ type AuthGuardProps = {
 };
 
 /**
- * Client-side auth gate for protected routes (e.g. future Checkout).
+ * Client-side auth gate for protected routes (e.g. Checkout).
  * Waits for Zustand hydration before redirecting — session cannot be
  * verified securely on the server with the current demo architecture.
  */

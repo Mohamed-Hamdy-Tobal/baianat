@@ -1,0 +1,60 @@
+{
+  "title": "إتمام الشراء",
+  "subtitle": "أكمل طلبك",
+  "shipping": {
+    "title": "معلومات الشحن"
+  },
+  "fields": {
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "address": "العنوان",
+    "city": "المدينة",
+    "country": "الدولة",
+    "postalCode": "الرمز البريدي"
+  },
+  "payment": {
+    "title": "طريقة الدفع",
+    "card": "بطاقة ائتمان / خصم",
+    "cashOnDelivery": "الدفع عند الاستلام",
+    "simulated": "معالجة الدفع محاكاة لهذا العرض التجريبي."
+  },
+  "summary": {
+    "title": "ملخص الطلب",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "free": "مجاني",
+    "total": "الإجمالي",
+    "quantity": "× {count}",
+    "unitPrice": "{price} للقطعة"
+  },
+  "placeOrder": "تأكيد الطلب",
+  "processing": "جارٍ معالجة الطلب…",
+  "empty": {
+    "title": "سلتك فارغة",
+    "description": "أضف منتجات إلى سلتك قبل إتمام الشراء.",
+    "cta": "متابعة التسوق"
+  },
+  "success": {
+    "title": "تم تأكيد الطلب",
+    "thankYou": "شكرًا لطلبك.",
+    "placed": "تم تقديم طلبك {orderId} بنجاح.",
+    "orderNumber": "رقم الطلب",
+    "orderTotal": "إجمالي الطلب",
+    "shipping": "الشحن",
+    "free": "مجاني",
+    "continue": "متابعة التسوق",
+    "missingTitle": "لا يوجد طلب للعرض",
+    "missingDescription": "لا يوجد طلب تجريبي حديث على هذا الجهاز.",
+    "items": "المنتجات"
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "email": "أدخل بريدًا إلكترونيًا صالحًا"
+  },
+  "errors": {
+    "unknown": "حدث خطأ ما. يُرجى المحاولة مرة أخرى.",
+    "unauthenticated": "يُرجى تسجيل الدخول لإتمام الطلب."
+  }
+}

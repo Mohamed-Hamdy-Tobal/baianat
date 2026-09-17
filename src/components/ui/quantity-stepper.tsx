@@ -48,7 +48,10 @@ function QuantityStepper({
 
   return (
     <div
-      className={cn("inline-flex items-center gap-0 rounded-md border border-border bg-surface", className)}
+      className={cn(
+        "inline-flex w-fit items-center gap-0 rounded-md border border-border bg-surface",
+        className,
+      )}
       {...props}
     >
       <Button
