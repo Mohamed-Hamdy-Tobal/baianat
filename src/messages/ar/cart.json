@@ -1,0 +1,25 @@
+{
+  "title": "السلة",
+  "subtitle": "سلة تسوقك",
+  "empty": {
+    "title": "سلتك فارغة",
+    "description": "استكشف كتالوج بيانات وابحث عن شيء يعجبك.",
+    "cta": "متابعة التسوق"
+  },
+  "items": "المنتجات",
+  "itemCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجًا} other {# منتج}}",
+  "product": "المنتج",
+  "price": "السعر",
+  "quantity": "الكمية",
+  "lineTotal": "الإجمالي",
+  "subtotal": "المجموع الفرعي",
+  "summary": "ملخص الطلب",
+  "remove": "إزالة",
+  "removeItem": "إزالة {title} من السلة",
+  "clear": "إفراغ السلة",
+  "checkout": "متابعة الدفع",
+  "checkoutUnavailable": "الدفع سيكون متاحًا قريبًا",
+  "decreaseQuantity": "تقليل الكمية",
+  "increaseQuantity": "زيادة الكمية",
+  "headerCount": "السلة، {count, plural, one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجًا} other {# منتج}}"
+}

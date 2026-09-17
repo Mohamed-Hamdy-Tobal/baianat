@@ -1,0 +1,16 @@
+{
+  "title": "Wishlist",
+  "subtitle": "Saved products",
+  "empty": {
+    "title": "Your wishlist is empty",
+    "description": "Save products you love and find them here later.",
+    "cta": "Explore products"
+  },
+  "addToCart": "Add to cart",
+  "remove": "Remove",
+  "removeItem": "Remove {title} from wishlist",
+  "viewProduct": "View product",
+  "addToWishlist": "Add to wishlist",
+  "removeFromWishlist": "Remove from wishlist",
+  "headerCount": "Wishlist, {count, plural, one {# item} other {# items}}"
+}

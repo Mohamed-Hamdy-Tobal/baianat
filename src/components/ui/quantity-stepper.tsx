@@ -12,6 +12,7 @@ export interface QuantityStepperProps extends Omit<React.HTMLAttributes<HTMLDivE
   min?: number;
   max?: number;
   disabled?: boolean;
+  size?: "default" | "touch";
   decrementLabel?: string;
   incrementLabel?: string;
   inputLabel?: string;
@@ -23,6 +24,7 @@ function QuantityStepper({
   min = 1,
   max,
   disabled = false,
+  size = "default",
   decrementLabel = "Decrease quantity",
   incrementLabel = "Increase quantity",
   inputLabel = "Quantity",
@@ -31,6 +33,7 @@ function QuantityStepper({
 }: QuantityStepperProps) {
   const canDecrement = !disabled && value > min;
   const canIncrement = !disabled && (max === undefined || value < max);
+  const isTouch = size === "touch";
 
   const clamp = (next: number) => {
     let result = next;
@@ -52,7 +55,7 @@ function QuantityStepper({
         type="button"
         variant="ghost"
         size="icon"
-        className="size-10 shrink-0 rounded-none rounded-s-md"
+        className={cn("shrink-0 rounded-none rounded-s-md", isTouch ? "size-11" : "size-10")}
         disabled={!canDecrement}
         aria-label={decrementLabel}
         onClick={() => setValue(value - 1)}
@@ -68,9 +71,10 @@ function QuantityStepper({
         aria-label={inputLabel}
         disabled={disabled}
         className={cn(
-          "h-10 w-12 border-x border-border bg-surface text-center text-sm font-medium text-text",
+          "border-x border-border bg-surface text-center text-sm font-medium text-text",
           "focus-visible:outline-none",
           "disabled:cursor-not-allowed disabled:opacity-50",
+          isTouch ? "h-11 w-14" : "h-10 w-12",
         )}
       />
 
@@ -78,7 +82,7 @@ function QuantityStepper({
         type="button"
         variant="ghost"
         size="icon"
-        className="size-10 shrink-0 rounded-none rounded-e-md"
+        className={cn("shrink-0 rounded-none rounded-e-md", isTouch ? "size-11" : "size-10")}
         disabled={!canIncrement}
         aria-label={incrementLabel}
         onClick={() => setValue(value + 1)}

@@ -1,0 +1,25 @@
+{
+  "title": "Cart",
+  "subtitle": "Your shopping cart",
+  "empty": {
+    "title": "Your cart is empty",
+    "description": "Explore the BAIANAT catalogue and find something you like.",
+    "cta": "Continue shopping"
+  },
+  "items": "Items",
+  "itemCount": "{count, plural, =0 {No items} one {# item} other {# items}}",
+  "product": "Product",
+  "price": "Price",
+  "quantity": "Quantity",
+  "lineTotal": "Total",
+  "subtotal": "Subtotal",
+  "summary": "Order summary",
+  "remove": "Remove",
+  "removeItem": "Remove {title} from cart",
+  "clear": "Clear cart",
+  "checkout": "Proceed to checkout",
+  "checkoutUnavailable": "Checkout will be available soon",
+  "decreaseQuantity": "Decrease quantity",
+  "increaseQuantity": "Increase quantity",
+  "headerCount": "Cart, {count, plural, one {# item} other {# items}}"
+}

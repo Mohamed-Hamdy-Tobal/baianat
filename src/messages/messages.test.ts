@@ -1,19 +1,23 @@
 import { describe, expect, it } from "vitest";
 
 import arCatalogue from "./ar/catalogue.json";
+import arCart from "./ar/cart.json";
 import arCategories from "./ar/categories.json";
 import arCommon from "./ar/common.json";
 import arErrors from "./ar/errors.json";
 import arHome from "./ar/home.json";
 import arNavigation from "./ar/navigation.json";
 import arPages from "./ar/pages.json";
+import arWishlist from "./ar/wishlist.json";
 import enCatalogue from "./en/catalogue.json";
+import enCart from "./en/cart.json";
 import enCategories from "./en/categories.json";
 import enCommon from "./en/common.json";
 import enErrors from "./en/errors.json";
 import enHome from "./en/home.json";
 import enNavigation from "./en/navigation.json";
 import enPages from "./en/pages.json";
+import enWishlist from "./en/wishlist.json";
 
 type MessageTree = string | { [key: string]: MessageTree };
 
@@ -36,6 +40,8 @@ const namespaces = {
   pages: { en: enPages, ar: arPages },
   categories: { en: enCategories, ar: arCategories },
   catalogue: { en: enCatalogue, ar: arCatalogue },
+  cart: { en: enCart, ar: arCart },
+  wishlist: { en: enWishlist, ar: arWishlist },
 } as const;
 
 describe("messages", () => {

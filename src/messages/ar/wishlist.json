@@ -1,0 +1,16 @@
+{
+  "title": "المفضلة",
+  "subtitle": "المنتجات المحفوظة",
+  "empty": {
+    "title": "قائمة المفضلة فارغة",
+    "description": "احفظ المنتجات التي تحبها لتجدها هنا لاحقًا.",
+    "cta": "استكشف المنتجات"
+  },
+  "addToCart": "أضف إلى السلة",
+  "remove": "إزالة",
+  "removeItem": "إزالة {title} من المفضلة",
+  "viewProduct": "عرض المنتج",
+  "addToWishlist": "أضف إلى المفضلة",
+  "removeFromWishlist": "إزالة من المفضلة",
+  "headerCount": "المفضلة، {count, plural, one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجًا} other {# منتج}}"
+}

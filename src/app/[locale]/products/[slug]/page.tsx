@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { NotFoundError } from "@/lib/api/errors";
 import { Breadcrumbs } from "@/features/products/components/breadcrumbs";
 import { ProductGallery } from "@/features/products/components/details/product-gallery";
-import { ProductPurchasePlaceholders } from "@/features/products/components/details/product-purchase-placeholders";
+import { ProductPurchaseActions } from "@/features/products/components/details/product-purchase-actions";
 import { ProductReviews } from "@/features/products/components/details/product-reviews";
 import { ProductSpecs } from "@/features/products/components/details/product-specs";
 import { RelatedProducts } from "@/features/products/components/details/related-products";
@@ -174,7 +174,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <p className="text-sm leading-relaxed text-text-secondary">{product.description}</p>
               </div>
 
-              <ProductPurchasePlaceholders outOfStock={outOfStock} />
+              <ProductPurchaseActions product={product} outOfStock={outOfStock} />
             </div>
           </div>
 

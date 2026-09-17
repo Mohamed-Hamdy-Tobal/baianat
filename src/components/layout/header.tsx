@@ -1,17 +1,16 @@
-import { Heart, ShoppingCart } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 
 import { DesktopNav } from "@/components/layout/desktop-nav";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { Button } from "@/components/ui/button";
+import { CartHeaderButton } from "@/features/cart/components/cart-header-button";
+import { WishlistHeaderButton } from "@/features/wishlist/components/wishlist-header-button";
 import { Link } from "@/i18n/navigation";
 import { MainContainer } from "./main-container";
 
 export async function Header() {
   const tCommon = await getTranslations("common");
-  const tNav = await getTranslations("navigation");
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-surface/90 shadow-[0_1px_0_0_rgba(15,23,42,0.03)] backdrop-blur-md supports-backdrop-filter:bg-surface/80">
@@ -28,26 +27,8 @@ export async function Header() {
         <DesktopNav className="ms-3" />
 
         <div className="ms-auto flex items-center gap-1">
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            disabled
-            aria-label={tNav("wishlist")}
-            className="hidden transition-transform duration-200 hover:scale-105 sm:inline-flex motion-reduce:hover:scale-100"
-          >
-            <Heart aria-hidden />
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            disabled
-            aria-label={tNav("cart")}
-            className="hidden transition-transform duration-200 hover:scale-105 sm:inline-flex motion-reduce:hover:scale-100"
-          >
-            <ShoppingCart aria-hidden />
-          </Button>
+          <WishlistHeaderButton />
+          <CartHeaderButton />
 
           <Suspense fallback={null}>
             <LanguageSwitcher className="ms-0.5" />

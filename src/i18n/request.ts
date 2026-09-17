@@ -5,7 +5,7 @@ import { locale as getLocaleParam } from "next/root-params";
 
 import { routing, type Locale } from "./routing";
 
-const namespaces = ["common", "navigation", "home", "errors", "pages", "categories", "catalogue"] as const;
+const namespaces = ["common", "navigation", "home", "errors", "pages", "categories", "catalogue", "cart", "wishlist"] as const;
 
 async function loadMessages(locale: Locale) {
   const entries = await Promise.all(
