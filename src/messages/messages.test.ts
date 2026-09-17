@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import arAuth from "./ar/auth.json";
 import arCatalogue from "./ar/catalogue.json";
 import arCart from "./ar/cart.json";
 import arCategories from "./ar/categories.json";
@@ -9,6 +10,7 @@ import arHome from "./ar/home.json";
 import arNavigation from "./ar/navigation.json";
 import arPages from "./ar/pages.json";
 import arWishlist from "./ar/wishlist.json";
+import enAuth from "./en/auth.json";
 import enCatalogue from "./en/catalogue.json";
 import enCart from "./en/cart.json";
 import enCategories from "./en/categories.json";
@@ -42,6 +44,7 @@ const namespaces = {
   catalogue: { en: enCatalogue, ar: arCatalogue },
   cart: { en: enCart, ar: arCart },
   wishlist: { en: enWishlist, ar: arWishlist },
+  auth: { en: enAuth, ar: arAuth },
 } as const;
 
 describe("messages", () => {

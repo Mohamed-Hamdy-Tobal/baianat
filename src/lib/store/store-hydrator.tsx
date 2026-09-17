@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 
+import { useAuthStore } from "@/features/auth/store/auth.store";
 import { useCartStore } from "@/features/cart/store/cart.store";
 import { useWishlistStore } from "@/features/wishlist/store/wishlist.store";
 
@@ -13,6 +14,7 @@ export function StoreHydrator() {
   useEffect(() => {
     void useCartStore.persist.rehydrate();
     void useWishlistStore.persist.rehydrate();
+    void useAuthStore.persist.rehydrate();
   }, []);
 
   return null;

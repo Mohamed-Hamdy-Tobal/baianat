@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { DesktopNav } from "@/components/layout/desktop-nav";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { AuthHeaderControl } from "@/features/auth/components/auth-header-control";
 import { CartHeaderButton } from "@/features/cart/components/cart-header-button";
 import { WishlistHeaderButton } from "@/features/wishlist/components/wishlist-header-button";
 import { Link } from "@/i18n/navigation";
@@ -29,6 +30,7 @@ export async function Header() {
         <div className="ms-auto flex items-center gap-1">
           <WishlistHeaderButton />
           <CartHeaderButton />
+          <AuthHeaderControl className="ms-0.5" />
 
           <Suspense fallback={null}>
             <LanguageSwitcher className="ms-0.5" />

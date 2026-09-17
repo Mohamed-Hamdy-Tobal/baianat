@@ -14,10 +14,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useAuthStore } from "@/features/auth/store/auth.store";
+import { getAuthUiState } from "@/features/auth/utils/auth-ui-state";
 import { getCartItemCount } from "@/features/cart/utils/cart-calculations";
 import { useCartStore } from "@/features/cart/store/cart.store";
 import { useWishlistStore } from "@/features/wishlist/store/wishlist.store";
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useStoreHydrated } from "@/lib/store/use-store-hydrated";
 import { cn } from "@/lib/utils";
 
@@ -30,16 +32,23 @@ const ACCOUNT_NAV = [
 
 export function MobileNav() {
   const t = useTranslations("navigation");
+  const tAuth = useTranslations("auth");
   const tCommon = useTranslations("common");
   const tCart = useTranslations("cart");
   const tWishlist = useTranslations("wishlist");
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const hydrated = useStoreHydrated();
   const cartItems = useCartStore((state) => state.items);
   const wishlistItems = useWishlistStore((state) => state.items);
+  const session = useAuthStore((state) => state.session);
+  const logout = useAuthStore((state) => state.logout);
+  const authState = getAuthUiState(hydrated, session);
   const cartCount = hydrated ? getCartItemCount(cartItems) : 0;
   const wishlistCount = hydrated ? wishlistItems.length : 0;
+  const accountLabel =
+    session?.user.firstName?.trim() || session?.user.username || tAuth("account");
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -110,6 +119,65 @@ export function MobileNav() {
                 </SheetClose>
               );
             })}
+          </nav>
+        </div>
+
+        <div className="mt-4 border-t border-border pt-4">
+          <nav aria-label={tAuth("account")} className="flex flex-col gap-1">
+            {authState === "authenticated" && session ? (
+              <>
+                <span className="px-3 py-2 text-sm font-medium text-text">{accountLabel}</span>
+                <SheetClose asChild>
+                  <button
+                    type="button"
+                    className={cn(
+                      "rounded-md px-3 py-3 text-start text-base font-medium text-text-secondary transition-colors",
+                      "hover:bg-background hover:text-text",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+                    )}
+                    onClick={() => {
+                      logout();
+                      router.replace("/");
+                    }}
+                  >
+                    {tAuth("logout")}
+                  </button>
+                </SheetClose>
+              </>
+            ) : (
+              <>
+                <SheetClose asChild>
+                  <Link
+                    href="/login"
+                    aria-current={isNavActive(pathname, "/login") ? "page" : undefined}
+                    className={cn(
+                      "rounded-md px-3 py-3 text-base font-medium transition-colors",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+                      isNavActive(pathname, "/login")
+                        ? "bg-primary-soft text-primary"
+                        : "text-text-secondary hover:bg-background hover:text-text",
+                    )}
+                  >
+                    {t("login")}
+                  </Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link
+                    href="/register"
+                    aria-current={isNavActive(pathname, "/register") ? "page" : undefined}
+                    className={cn(
+                      "rounded-md px-3 py-3 text-base font-medium transition-colors",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+                      isNavActive(pathname, "/register")
+                        ? "bg-primary-soft text-primary"
+                        : "text-text-secondary hover:bg-background hover:text-text",
+                    )}
+                  >
+                    {t("register")}
+                  </Link>
+                </SheetClose>
+              </>
+            )}
           </nav>
         </div>
 

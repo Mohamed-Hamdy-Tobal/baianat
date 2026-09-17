@@ -4,7 +4,8 @@
   "products": "Products",
   "cart": "Cart",
   "wishlist": "Wishlist",
-  "login": "Login",
+  "login": "Log in",
+  "register": "Register",
   "about": "About",
   "contact": "Contact"
 }

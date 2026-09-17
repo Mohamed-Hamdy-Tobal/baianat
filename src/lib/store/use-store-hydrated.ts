@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 
+import { useAuthStore } from "@/features/auth/store/auth.store";
 import { useCartStore } from "@/features/cart/store/cart.store";
 import { useWishlistStore } from "@/features/wishlist/store/wishlist.store";
 
@@ -15,14 +16,20 @@ function useIsClient(): boolean {
 function subscribeHydration(onStoreChange: () => void) {
   const unsubCart = useCartStore.persist.onFinishHydration(onStoreChange);
   const unsubWishlist = useWishlistStore.persist.onFinishHydration(onStoreChange);
+  const unsubAuth = useAuthStore.persist.onFinishHydration(onStoreChange);
   return () => {
     unsubCart();
     unsubWishlist();
+    unsubAuth();
   };
 }
 
 function getHydrationSnapshot() {
-  return useCartStore.persist.hasHydrated() && useWishlistStore.persist.hasHydrated();
+  return (
+    useCartStore.persist.hasHydrated() &&
+    useWishlistStore.persist.hasHydrated() &&
+    useAuthStore.persist.hasHydrated()
+  );
 }
 
 function getServerHydrationSnapshot() {
@@ -30,7 +37,7 @@ function getServerHydrationSnapshot() {
 }
 
 /**
- * True only after the component has hydrated on the client AND both persist
+ * True only after the component has hydrated on the client AND all persist
  * stores have rehydrated. The client gate prevents soft-navigation mismatches
  * when stores were already hydrated from a previous page.
  */
