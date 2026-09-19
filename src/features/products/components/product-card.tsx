@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { ProductPrice } from "@/features/products/components/product-price";
 import { ProductRating } from "@/features/products/components/product-rating";
+import { ProductSalePrice } from "@/features/products/components/product-sale-price";
 import type { ProductSummary } from "@/features/products/types/product";
 import { categoryMessageKey } from "@/features/products/utils/find-category";
 import { discountedPrice, hasDiscount } from "@/features/products/utils/pricing";
@@ -49,9 +49,9 @@ export function ProductCard({ product, className }: ProductCardProps) {
           ) : null}
           <Image
             src={product.image}
-            alt={product.title}
+            alt=""
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
             className="object-contain transition-transform duration-200 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
         </div>
@@ -62,13 +62,13 @@ export function ProductCard({ product, className }: ProductCardProps) {
           {product.brand ? <p className="text-xs text-text-secondary">{product.brand}</p> : null}
           <h3 className="line-clamp-2 text-sm font-medium leading-snug text-text">{product.title}</h3>
           <ProductRating rate={product.rating.rate} count={product.rating.count} />
-          <div className="mt-auto flex flex-wrap items-baseline gap-2 pt-1">
-            <ProductPrice amount={salePrice} />
-            {onSale ? (
-              <span className="text-sm text-text-muted line-through">
-                <ProductPrice amount={product.price} className="font-normal text-text-muted" />
-              </span>
-            ) : null}
+          <div className="mt-auto pt-1">
+            <ProductSalePrice
+              salePrice={salePrice}
+              listPrice={product.price}
+              onSale={onSale}
+              originalPriceLabel={t("product.originalPrice")}
+            />
           </div>
         </div>
       </Link>

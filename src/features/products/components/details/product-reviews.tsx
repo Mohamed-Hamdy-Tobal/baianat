@@ -18,7 +18,7 @@ export async function ProductReviews({ reviews }: ProductReviewsProps) {
       </h2>
 
       {reviews.length === 0 ? (
-        <p className="text-sm text-text-secondary">{t("empty.description")}</p>
+        <p className="text-sm text-text-secondary">{t("product.reviewsEmpty")}</p>
       ) : (
         <ul className="flex flex-col gap-4">
           {reviews.map((review, index) => {

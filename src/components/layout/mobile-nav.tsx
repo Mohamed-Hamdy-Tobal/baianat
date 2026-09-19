@@ -1,10 +1,11 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Menu, LogOut } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Suspense, useState } from "react";
 
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -49,6 +50,10 @@ export function MobileNav() {
   const wishlistCount = hydrated ? wishlistItems.length : 0;
   const accountLabel =
     session?.user.firstName?.trim() || session?.user.username || tAuth("account");
+  const accountEmail = session?.user.email?.trim();
+  const accountInitial = accountLabel.charAt(0)
+    ? accountLabel.charAt(0).toLocaleUpperCase()
+    : "?";
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -85,7 +90,7 @@ export function MobileNav() {
         </nav>
 
         <div className="mt-4 border-t border-border pt-4">
-          <nav aria-label={tCart("title")} className="flex flex-col gap-1">
+          <nav aria-label={tCommon("a11y.accountNav")} className="flex flex-col gap-1">
             {ACCOUNT_NAV.map((item) => {
               const active = isNavActive(pathname, item.href);
               const count = item.key === "cart" ? cartCount : wishlistCount;
@@ -126,13 +131,34 @@ export function MobileNav() {
           <nav aria-label={tAuth("account")} className="flex flex-col gap-1">
             {authState === "authenticated" && session ? (
               <>
-                <span className="px-3 py-2 text-sm font-medium text-text">{accountLabel}</span>
+                <div className="mb-2 overflow-hidden rounded-xl border border-border bg-background">
+                  <div className="flex items-center gap-3 px-3 py-3">
+                    <Avatar className="size-11 ring-1 ring-border">
+                      {session.user.image ? <AvatarImage src={session.user.image} alt="" /> : null}
+                      <AvatarFallback className="text-base" aria-hidden>
+                        {accountInitial}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-semibold tracking-tight text-text">
+                        {accountLabel}
+                      </p>
+                      {accountEmail ? (
+                        <p className="mt-0.5 truncate text-xs text-text-secondary">{accountEmail}</p>
+                      ) : (
+                        <p className="mt-0.5 truncate text-xs text-text-muted">
+                          @{session.user.username}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
                 <SheetClose asChild>
                   <button
                     type="button"
                     className={cn(
-                      "rounded-md px-3 py-3 text-start text-base font-medium text-text-secondary transition-colors",
-                      "hover:bg-background hover:text-text",
+                      "inline-flex items-center gap-2.5 rounded-lg px-3 py-3 text-start text-base font-medium text-text-secondary transition-colors",
+                      "hover:bg-error/10 hover:text-error",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
                     )}
                     onClick={() => {
@@ -140,6 +166,7 @@ export function MobileNav() {
                       router.replace("/");
                     }}
                   >
+                    <LogOut className="size-4 shrink-0" aria-hidden />
                     {tAuth("logout")}
                   </button>
                 </SheetClose>

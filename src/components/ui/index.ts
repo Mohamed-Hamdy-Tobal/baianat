@@ -1,10 +1,8 @@
 export { Button, buttonVariants, type ButtonProps } from "./button";
 export { Input, type InputProps } from "./input";
 export { PasswordInput, type PasswordInputProps } from "./password-input";
-export { Textarea, type TextareaProps } from "./textarea";
 export { Label } from "./label";
 export { Field, type FieldProps } from "./field";
-export { Badge, badgeVariants, type BadgeProps } from "./badge";
 export { Skeleton } from "./skeleton";
 export {
   Dialog,
@@ -30,3 +28,12 @@ export {
   SheetDescription,
 } from "./sheet";
 export { QuantityStepper, type QuantityStepperProps } from "./quantity-stepper";
+export { Avatar, AvatarImage, AvatarFallback } from "./avatar";
+export {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "./dropdown-menu";

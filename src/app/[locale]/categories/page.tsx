@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import { MainContainer } from "@/components/layout/main-container";
 import { Breadcrumbs } from "@/features/products/components/breadcrumbs";
+import { CatalogueEmpty } from "@/features/products/components/catalogue-empty";
 import { CategoryGrid } from "@/features/products/components/categories/category-grid";
 import { getCategoryPreviews } from "@/features/products";
 import { breadcrumbJsonLd, JsonLd, publicPageMetadata } from "@/lib/seo";
@@ -57,10 +58,10 @@ export default async function CategoriesPage({ params }: CategoriesPageProps) {
           </header>
 
           {categories.length === 0 ? (
-            <div className="flex flex-col gap-2 rounded-xl border border-border bg-surface p-8">
-              <h2 className="text-base font-semibold text-text">{t("categoriesPage.emptyTitle")}</h2>
-              <p className="text-sm text-text-secondary">{t("categoriesPage.emptyDescription")}</p>
-            </div>
+            <CatalogueEmpty
+              title={t("categoriesPage.emptyTitle")}
+              description={t("categoriesPage.emptyDescription")}
+            />
           ) : (
             <CategoryGrid categories={categories} />
           )}

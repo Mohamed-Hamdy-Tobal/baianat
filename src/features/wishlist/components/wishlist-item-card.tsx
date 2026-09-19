@@ -41,14 +41,14 @@ export function WishlistItemCard({ item }: WishlistItemCardProps) {
 
       <Link
         href={`/products/${item.slug}`}
-        className="flex flex-1 flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        className="flex flex-1 flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         <div className="relative aspect-square bg-background p-6">
           <Image
             src={item.image}
-            alt={item.title}
+            alt=""
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
             className="object-contain"
           />
         </div>

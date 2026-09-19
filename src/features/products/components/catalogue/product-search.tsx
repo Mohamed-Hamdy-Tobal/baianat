@@ -92,7 +92,7 @@ export function ProductSearch({ className, lockedCategory }: ProductSearchProps)
       {isPending ? (
         <Loader2
           aria-hidden
-          className="absolute end-3 top-1/2 size-4 -translate-y-1/2 animate-spin text-primary"
+          className="absolute inset-e-3 top-1/2 size-4 -translate-y-1/2 animate-spin text-primary motion-reduce:animate-none"
         />
       ) : null}
       <span className="sr-only" aria-live="polite">

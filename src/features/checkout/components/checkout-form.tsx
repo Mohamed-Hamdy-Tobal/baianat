@@ -16,6 +16,7 @@ import {
   checkoutFormSchema,
   type CheckoutFormValues,
 } from "@/features/checkout/schemas/checkout.schema";
+import { useCheckoutDetailsStore } from "@/features/checkout/store/checkout-details.store";
 import { useOrderStore } from "@/features/checkout/store/order.store";
 import type { PlaceOrderError } from "@/features/checkout/types/order";
 import { placeCheckoutOrder } from "@/features/checkout/utils/place-order";
@@ -63,6 +64,8 @@ export function CheckoutForm({ items }: CheckoutFormProps) {
   const session = useAuthStore((state) => state.session);
   const clearCart = useCartStore((state) => state.clearCart);
   const setLastOrder = useOrderStore((state) => state.setLastOrder);
+  const savedDetails = useCheckoutDetailsStore((state) => state.details);
+  const setCheckoutDetails = useCheckoutDetailsStore((state) => state.setCheckoutDetails);
   const [formError, setFormError] = useState<string | null>(null);
 
   const {
@@ -73,14 +76,14 @@ export function CheckoutForm({ items }: CheckoutFormProps) {
   } = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
-      firstName: session?.user.firstName ?? "",
-      lastName: session?.user.lastName ?? "",
-      email: session?.user.email ?? "",
-      phone: "",
-      address: "",
-      city: "",
-      country: "",
-      postalCode: "",
+      firstName: session?.user.firstName?.trim() || savedDetails?.firstName || "",
+      lastName: session?.user.lastName?.trim() || savedDetails?.lastName || "",
+      email: session?.user.email?.trim() || savedDetails?.email || "",
+      phone: savedDetails?.phone || "",
+      address: savedDetails?.address || "",
+      city: savedDetails?.city || "",
+      country: savedDetails?.country || "",
+      postalCode: savedDetails?.postalCode || "",
       paymentMethod: "card",
     },
     mode: "onSubmit",
@@ -125,8 +128,20 @@ export function CheckoutForm({ items }: CheckoutFormProps) {
       }
 
       setLastOrder(result.order);
+      setCheckoutDetails({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        phone: values.phone,
+        address: values.address,
+        city: values.city,
+        country: values.country,
+        postalCode: values.postalCode ?? "",
+      });
+
+      // Navigate first so CheckoutView never briefly shows empty-cart UI.
+      await router.replace("/checkout/success");
       clearCart();
-      router.replace("/checkout/success");
     } catch {
       setFormError(t("errors.unknown"));
     }

@@ -13,6 +13,8 @@
   "quantity": "الكمية",
   "lineTotal": "الإجمالي",
   "subtotal": "المجموع الفرعي",
+  "shipping": "الشحن",
+  "shippingFree": "مجاني",
   "summary": "ملخص الطلب",
   "remove": "إزالة",
   "removeItem": "إزالة {title} من السلة",

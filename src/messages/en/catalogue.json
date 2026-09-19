@@ -55,7 +55,8 @@
   },
   "empty": {
     "title": "No products found",
-    "description": "Try adjusting your search or filters."
+    "description": "Try adjusting your search or filters.",
+    "cta": "View all products"
   },
   "errors": {
     "title": "Something went wrong",
@@ -69,6 +70,7 @@
     "sku": "SKU",
     "stock": "Stock",
     "availability": "Availability",
+    "inStock": "In stock",
     "weight": "Weight",
     "dimensions": "Dimensions",
     "warranty": "Warranty",
@@ -79,6 +81,7 @@
     "tags": "Tags",
     "information": "Product information",
     "reviews": "Reviews",
+    "reviewsEmpty": "No reviews yet for this product.",
     "related": "Related products",
     "addToCart": "Add to cart",
     "wishlist": "Wishlist",
@@ -91,6 +94,7 @@
     "savePercent": "Save {percent}%",
     "originalPrice": "Original price",
     "gallery": "Product images",
+    "galleryImage": "{title}, image {index}",
     "noRelated": "No related products right now."
   },
   "categoriesPage": {
@@ -98,7 +102,8 @@
     "description": "Explore the collections available across BAIANAT.",
     "productCount": "{count, plural, =0 {No products} one {# product} other {# products}}",
     "emptyTitle": "No categories yet",
-    "emptyDescription": "Collections will appear here once the catalogue is available."
+    "emptyDescription": "Collections will appear here once the catalogue is available.",
+    "emptyCta": "View all products"
   },
   "categoryPage": {
     "productCount": "{count, plural, =0 {No products} one {# product} other {# products}}"

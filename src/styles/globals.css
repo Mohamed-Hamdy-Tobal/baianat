@@ -74,6 +74,8 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) #f3f4f6;
   }
 
   body {
@@ -82,5 +84,36 @@
 
   html[lang="ar"] body {
     font-family: var(--font-arabic);
+  }
+
+  /* Scrollbars — WebKit + Firefox, brand primary */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) #f3f4f6;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover);
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: #f3f4f6;
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-corner {
+    background-color: transparent;
   }
 }

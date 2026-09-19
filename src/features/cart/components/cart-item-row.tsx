@@ -25,27 +25,27 @@ export function CartItemRow({ item }: CartItemRowProps) {
   const lineTotal = getCartItemSubtotal(item);
 
   return (
-    <li className="rounded-lg border border-border bg-surface p-4 sm:p-5">
-      <div className="flex gap-4">
+    <li className="rounded-xl border border-border bg-surface p-3 shadow-sm transition-colors hover:border-border-strong sm:p-4">
+      <div className="flex gap-3 sm:gap-4">
         <Link
           href={`/products/${item.slug}`}
-          className="relative size-20 shrink-0 overflow-hidden rounded-md border border-border bg-background sm:size-24"
+          className="relative size-24 shrink-0 overflow-hidden rounded-lg bg-background sm:size-28"
         >
           <Image
             src={item.image}
             alt={item.title}
             fill
-            sizes="96px"
-            className="object-contain p-2"
+            sizes="112px"
+            className="object-contain p-2.5"
           />
         </Link>
 
         <div className="flex min-w-0 flex-1 flex-col gap-3">
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex flex-col gap-1">
               <Link
                 href={`/products/${item.slug}`}
-                className="line-clamp-2 text-sm font-medium text-text hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="line-clamp-2 text-sm font-semibold leading-snug tracking-tight text-text hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 {item.title}
               </Link>
@@ -56,7 +56,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
               type="button"
               variant="ghost"
               size="icon"
-              className="size-11 shrink-0 text-text-muted hover:text-error"
+              className="size-9 shrink-0 rounded-full text-text-muted hover:bg-error/10 hover:text-error"
               aria-label={t("removeItem", { title: item.title })}
               onClick={() => removeItem(item.productId)}
             >
@@ -64,7 +64,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
             </Button>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-border/70 pt-3">
             <QuantityStepper
               size="touch"
               value={item.quantity}
@@ -75,8 +75,8 @@ export function CartItemRow({ item }: CartItemRowProps) {
               decrementLabel={t("decreaseQuantity")}
               incrementLabel={t("increaseQuantity")}
             />
-            <p className="text-sm font-semibold text-text">
-              <span className="me-2 text-text-muted font-normal sm:hidden">{t("lineTotal")}</span>
+            <p className="text-base font-semibold tracking-tight text-text">
+              <span className="me-2 text-xs font-normal text-text-muted sm:hidden">{t("lineTotal")}</span>
               {formatPrice(lineTotal, locale)}
             </p>
           </div>

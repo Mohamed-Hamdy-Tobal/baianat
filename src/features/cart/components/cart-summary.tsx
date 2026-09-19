@@ -17,27 +17,42 @@ export function CartSummary() {
   const count = getCartItemCount(items);
 
   return (
-    <aside className="rounded-lg border border-border bg-surface p-5 lg:sticky lg:top-24">
-      <h2 className="text-base font-semibold text-text">{t("summary")}</h2>
+    <aside className="overflow-hidden rounded-xl border border-border bg-surface shadow-sm lg:sticky lg:top-24">
+      <div className="border-b border-border bg-background/60 px-5 py-4">
+        <h2 className="text-base font-semibold tracking-tight text-text">{t("summary")}</h2>
+      </div>
 
-      <dl className="mt-4 flex flex-col gap-3 border-b border-border pb-4">
-        <div className="flex items-center justify-between gap-3">
-          <dt className="text-sm text-text-secondary">{t("subtotal")}</dt>
-          <dd className="text-base font-semibold text-text">{formatPrice(subtotal, locale)}</dd>
-        </div>
-        <div className="flex items-center justify-between gap-3">
-          <dt className="text-sm text-text-secondary">{t("items")}</dt>
-          <dd className="text-sm text-text">{t("itemCount", { count })}</dd>
-        </div>
-      </dl>
+      <div className="flex flex-col gap-4 p-5">
+        <dl className="flex flex-col gap-3">
+          <div className="flex items-center justify-between gap-3">
+            <dt className="text-sm text-text-secondary">{t("items")}</dt>
+            <dd className="text-sm font-medium text-text">{t("itemCount", { count })}</dd>
+          </div>
+          <div className="flex items-center justify-between gap-3">
+            <dt className="text-sm text-text-secondary">{t("shipping")}</dt>
+            <dd className="text-sm font-medium text-success">{t("shippingFree")}</dd>
+          </div>
+          <div className="flex items-center justify-between gap-3 border-t border-border pt-3">
+            <dt className="text-sm font-medium text-text">{t("subtotal")}</dt>
+            <dd className="text-lg font-semibold tracking-tight text-text">
+              {formatPrice(subtotal, locale)}
+            </dd>
+          </div>
+        </dl>
 
-      <div className="mt-4 flex flex-col gap-3">
-        <Button asChild className="w-full">
-          <Link href="/checkout">{t("checkout")}</Link>
-        </Button>
-        <Button type="button" variant="ghost" className="w-full text-text-secondary" onClick={() => clearCart()}>
-          {t("clear")}
-        </Button>
+        <div className="flex flex-col gap-2.5 pt-1">
+          <Button asChild className="min-h-11 w-full">
+            <Link href="/checkout">{t("checkout")}</Link>
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            className="w-full text-text-secondary hover:text-error"
+            onClick={() => clearCart()}
+          >
+            {t("clear")}
+          </Button>
+        </div>
       </div>
     </aside>
   );

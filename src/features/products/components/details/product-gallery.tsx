@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useId, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -14,11 +14,13 @@ type ProductGalleryProps = {
 
 export function ProductGallery({ images, title, className }: ProductGalleryProps) {
   const t = useTranslations("catalogue");
+  const locale = useLocale();
   const labelId = useId();
   const sources = images.length > 0 ? images : [];
   const [activeIndex, setActiveIndex] = useState(0);
   const active = sources[activeIndex] ?? sources[0];
   const showThumbs = sources.length > 1;
+  const isRtl = locale === "ar";
 
   if (!active) {
     return (
@@ -60,16 +62,16 @@ export function ProductGallery({ images, title, className }: ProductGalleryProps
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   onKeyDown={(event) => {
-                    if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-                      event.preventDefault();
-                      const delta = event.key === "ArrowRight" ? 1 : -1;
-                      setActiveIndex((current) => (current + delta + sources.length) % sources.length);
-                    }
+                    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+                    event.preventDefault();
+                    const forward = event.key === "ArrowRight";
+                    const delta = isRtl ? (forward ? -1 : 1) : forward ? 1 : -1;
+                    setActiveIndex((current) => (current + delta + sources.length) % sources.length);
                   }}
-                  aria-label={`${title} ${index + 1}`}
+                  aria-label={t("product.galleryImage", { title, index: index + 1 })}
                   aria-current={selected ? "true" : undefined}
                   className={cn(
-                    "relative size-16 overflow-hidden rounded-md border bg-surface p-1 transition-colors sm:size-20",
+                    "relative size-16 overflow-hidden rounded-md border bg-surface p-1 transition-colors motion-reduce:transition-none sm:size-20",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     selected ? "border-primary" : "border-border hover:border-border-strong",
                   )}

@@ -137,6 +137,7 @@ describe("useOrderStore", () => {
 
     expect(success.ok).toBe(true);
     if (success.ok) {
+      // Mirrors checkout-form: persist order first; cart clear happens after success navigation.
       useOrderStore.getState().setLastOrder(success.order);
       useCartStore.getState().clearCart();
     }

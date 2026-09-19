@@ -25,24 +25,31 @@ export function ProductFiltersMobile({ categories, lockedCategory }: ProductFilt
   const [open, setOpen] = useState(false);
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button type="button" variant="outline" className="lg:hidden" aria-label={t("productsPage.openFilters")}>
-          <SlidersHorizontal aria-hidden />
-          {t("productsPage.filters")}
-        </Button>
-      </SheetTrigger>
-      <SheetContent className="overflow-y-auto">
-        <SheetHeader>
-          <SheetTitle>{t("productsPage.filters")}</SheetTitle>
-        </SheetHeader>
-        <ProductFilterPanel
-          categories={categories}
-          lockedCategory={lockedCategory}
-          className="pt-2"
-          onApplied={() => setOpen(false)}
-        />
-      </SheetContent>
-    </Sheet>
+    <div className="w-full lg:hidden">
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full justify-center"
+            aria-label={t("productsPage.openFilters")}
+          >
+            <SlidersHorizontal aria-hidden />
+            {t("productsPage.filters")}
+          </Button>
+        </SheetTrigger>
+        <SheetContent className="overflow-y-auto" aria-describedby={undefined}>
+          <SheetHeader>
+            <SheetTitle>{t("productsPage.filters")}</SheetTitle>
+          </SheetHeader>
+          <ProductFilterPanel
+            categories={categories}
+            lockedCategory={lockedCategory}
+            className="pt-2"
+            onApplied={() => setOpen(false)}
+          />
+        </SheetContent>
+      </Sheet>
+    </div>
   );
 }

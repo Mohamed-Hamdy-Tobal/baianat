@@ -15,9 +15,6 @@ export async function ProductSpecs({ product }: ProductSpecsProps) {
   if (product.brand) rows.push({ label: t("product.brand"), value: product.brand });
   if (product.sku) rows.push({ label: t("product.sku"), value: product.sku });
   rows.push({ label: t("product.stock"), value: String(product.stock) });
-  if (product.availabilityStatus) {
-    rows.push({ label: t("product.availability"), value: product.availabilityStatus });
-  }
   if (product.weight != null) {
     rows.push({ label: t("product.weight"), value: `${product.weight}` });
   }

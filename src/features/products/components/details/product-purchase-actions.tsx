@@ -32,10 +32,12 @@ export function ProductPurchaseActions({ product, outOfStock = false }: ProductP
   const wishlistLabel = wishlisted ? tWishlist("removeFromWishlist") : tWishlist("addToWishlist");
 
   return (
-    <div className="flex flex-col gap-4 border-t border-border pt-5">
-      <div className="flex flex-col gap-2">
+    <div className="flex w-full flex-col gap-4 border-t border-border pt-5">
+      <div className="flex w-full flex-col gap-2">
         <span className="text-sm font-medium text-text">{t("product.quantity")}</span>
         <QuantityStepper
+          className="w-full"
+          size="touch"
           value={quantity}
           onChange={setQuantity}
           min={MIN_QUANTITY}
@@ -47,18 +49,18 @@ export function ProductPurchaseActions({ product, outOfStock = false }: ProductP
         />
       </div>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="grid w-full grid-cols-2 gap-3">
         <Button
           type="button"
-          className="min-w-40"
+          className="h-11 w-full"
           disabled={outOfStock}
           onClick={() => {
             if (outOfStock) return;
             addItem(product, quantity);
           }}
         >
-          <ShoppingCart aria-hidden />
-          {outOfStock ? t("product.outOfStock") : t("product.addToCart")}
+          <ShoppingCart aria-hidden className="shrink-0" />
+          <span className="truncate">{outOfStock ? t("product.outOfStock") : t("product.addToCart")}</span>
         </Button>
         <Button
           type="button"
@@ -66,10 +68,10 @@ export function ProductPurchaseActions({ product, outOfStock = false }: ProductP
           aria-pressed={wishlisted}
           aria-label={wishlistLabel}
           onClick={() => toggleItem(product)}
-          className={cn(wishlisted && "border-primary/40 text-primary")}
+          className={cn("h-11 w-full", wishlisted && "border-primary/40 text-primary")}
         >
-          <Heart aria-hidden className={cn(wishlisted && "fill-current")} />
-          {wishlistLabel}
+          <Heart aria-hidden className={cn("shrink-0", wishlisted && "fill-current")} />
+          <span className="truncate">{wishlistLabel}</span>
         </Button>
       </div>
     </div>

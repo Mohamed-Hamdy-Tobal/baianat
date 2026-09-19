@@ -58,14 +58,14 @@ export function ProductSortSelect({ className, lockedCategory }: ProductSortSele
   };
 
   return (
-    <label className={cn("inline-flex items-center gap-2 text-sm text-text-secondary", className)}>
-      <span className="whitespace-nowrap">{t("sort.label")}</span>
+    <div className={cn("min-w-0", className)}>
       <select
         value={query.sort}
         disabled={isPending}
+        aria-label={t("sort.label")}
         onChange={(event) => onChange(event.target.value)}
         className={cn(
-          "h-10 rounded-md border border-border-strong bg-surface px-3 text-sm text-text",
+          "h-10 w-full rounded-md border border-border-strong bg-surface pe-8 ps-3 text-sm font-medium text-text",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           "disabled:opacity-50",
         )}
@@ -76,6 +76,6 @@ export function ProductSortSelect({ className, lockedCategory }: ProductSortSele
           </option>
         ))}
       </select>
-    </label>
+    </div>
   );
 }

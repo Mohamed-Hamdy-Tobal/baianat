@@ -13,6 +13,8 @@
   "quantity": "Quantity",
   "lineTotal": "Total",
   "subtotal": "Subtotal",
+  "shipping": "Shipping",
+  "shippingFree": "Free",
   "summary": "Order summary",
   "remove": "Remove",
   "removeItem": "Remove {title} from cart",

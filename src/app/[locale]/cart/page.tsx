@@ -19,17 +19,11 @@ export async function generateMetadata({ params }: CartPageProps): Promise<Metad
   });
 }
 
-export default async function CartPage() {
-  const t = await getTranslations("cart");
-
+export default function CartPage() {
   return (
     <div>
       <MainContainer>
-        <div className="flex flex-col gap-6 py-2">
-          <header className="flex flex-col gap-1">
-            <h1 className="text-2xl font-semibold tracking-tight text-text">{t("title")}</h1>
-            <p className="text-sm text-text-secondary">{t("subtitle")}</p>
-          </header>
+        <div className="py-2">
           <CartView />
         </div>
       </MainContainer>

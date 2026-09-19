@@ -26,7 +26,9 @@
     "skipToMain": "Skip to main content",
     "openMenu": "Open menu",
     "mainNav": "Main navigation",
-    "footerNav": "Footer navigation"
+    "footerNav": "Footer navigation",
+    "accountNav": "Account",
+    "openAccountMenu": "Open account menu for {name}"
   },
   "footer": {
     "copyright": "© {year} BAIANAT"

@@ -27,7 +27,7 @@ export function CheckoutPayment({ register, value, error, disabled }: CheckoutPa
     <fieldset className="flex flex-col gap-3" disabled={disabled} aria-describedby={errorId}>
       <legend className="text-base font-semibold text-text">{t("payment.title")}</legend>
 
-      <div className="flex flex-col gap-2" role="radiogroup" aria-label={t("payment.title")}>
+      <div className="flex flex-col gap-2">
         {OPTIONS.map((option) => {
           const selected = value === option.value;
           const optionId = `payment-${option.value}`;
@@ -37,7 +37,7 @@ export function CheckoutPayment({ register, value, error, disabled }: CheckoutPa
               key={option.value}
               htmlFor={optionId}
               className={cn(
-                "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 py-2.5 text-sm transition-colors",
+                "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 py-2.5 text-sm transition-colors motion-reduce:transition-none",
                 "focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-surface",
                 selected
                   ? "border-primary bg-primary-soft text-text"

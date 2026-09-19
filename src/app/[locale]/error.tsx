@@ -10,15 +10,15 @@ type LocaleErrorProps = {
 };
 
 export default function LocaleError({ reset }: LocaleErrorProps) {
-  const t = useTranslations("catalogue");
+  const t = useTranslations("errors");
 
   return (
     <MainContainer>
       <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
-        <h1 className="text-2xl font-semibold tracking-tight text-text">{t("errors.title")}</h1>
-        <p className="max-w-md text-sm text-text-secondary">{t("errors.description")}</p>
+        <h1 className="text-2xl font-semibold tracking-tight text-text">{t("generic.title")}</h1>
+        <p className="max-w-md text-sm text-text-secondary">{t("generic.description")}</p>
         <Button type="button" onClick={reset}>
-          {t("errors.retry")}
+          {t("generic.retry")}
         </Button>
       </div>
     </MainContainer>

@@ -10,8 +10,8 @@ import { ProductPurchaseActions } from "@/features/products/components/details/p
 import { ProductReviews } from "@/features/products/components/details/product-reviews";
 import { ProductSpecs } from "@/features/products/components/details/product-specs";
 import { RelatedProducts } from "@/features/products/components/details/related-products";
-import { ProductPrice } from "@/features/products/components/product-price";
 import { ProductRating } from "@/features/products/components/product-rating";
+import { ProductSalePrice } from "@/features/products/components/product-sale-price";
 import {
   categoryMessageKey,
   discountedPrice,
@@ -21,6 +21,7 @@ import {
   hasDiscount,
   parseProductSlug,
 } from "@/features/products";
+import { resolveAvailabilityKey } from "@/features/products/utils/resolve-availability";
 import { Link, redirect } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { breadcrumbJsonLd, JsonLd, productJsonLd, productPageMetadata } from "@/lib/seo";
@@ -99,6 +100,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const onSale = hasDiscount(product.discountPercentage);
   const salePrice = discountedPrice(product.price, product.discountPercentage);
   const outOfStock = product.stock <= 0;
+  const availabilityKey = resolveAvailabilityKey(product.stock);
 
   const breadcrumbItems = [
     { name: t("breadcrumbs.home"), path: "/" },
@@ -139,25 +141,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.brand ? <p className="text-sm text-text-secondary">{product.brand}</p> : null}
                 <h1 className="text-2xl font-semibold tracking-tight text-text sm:text-3xl">{product.title}</h1>
                 <ProductRating rate={product.rating.rate} count={product.rating.count} />
-                <div className="flex flex-wrap items-baseline gap-3">
-                  <ProductPrice amount={salePrice} className="text-2xl" />
-                  {onSale ? (
-                    <span className="text-base text-text-muted line-through">
-                      <span className="sr-only">{t("product.originalPrice")}: </span>
-                      <ProductPrice amount={product.price} className="font-normal text-text-muted" />
-                    </span>
-                  ) : null}
-                  {onSale ? (
-                    <span className="rounded-md bg-error/10 px-2 py-0.5 text-xs font-medium text-error">
-                      {t("product.savePercent", { percent: Math.round(product.discountPercentage) })}
-                    </span>
-                  ) : null}
-                </div>
-                {product.availabilityStatus ? (
-                  <p className="text-sm text-text-secondary">
-                    {t("product.availability")}: {product.availabilityStatus}
-                  </p>
-                ) : null}
+                <ProductSalePrice
+                  salePrice={salePrice}
+                  listPrice={product.price}
+                  onSale={onSale}
+                  originalPriceLabel={t("product.originalPrice")}
+                  saveLabel={t("product.savePercent", { percent: Math.round(product.discountPercentage) })}
+                  amountClassName="text-2xl"
+                  className="gap-3"
+                  showSaveBadge
+                />
+                <p className="text-sm text-text-secondary">
+                  {t("product.availability")}:{" "}
+                  {availabilityKey === "inStock" ? t("product.inStock") : t("product.outOfStock")}
+                </p>
               </div>
 
               <div className="flex flex-col gap-2 border-t border-border pt-5">

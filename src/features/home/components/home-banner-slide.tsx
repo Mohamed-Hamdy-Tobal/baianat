@@ -30,6 +30,8 @@ export function HomeBannerSlideView({ slide, active, priority = false }: HomeBan
         active ? "opacity-100" : "pointer-events-none opacity-0",
       )}
       aria-hidden={!active}
+      // Inactive slides must not expose focusable CTAs inside aria-hidden.
+      {...(!active ? { inert: true } : {})}
     >
       <Image
         src={slide.imageSrc}
@@ -66,8 +68,10 @@ export function HomeBannerSlideView({ slide, active, priority = false }: HomeBan
               {t(slide.titleKey)}
             </h2>
             <p className="max-w-lg text-base text-white/85 sm:text-lg">{t(slide.descriptionKey)}</p>
-            <Button asChild size="lg" className="mt-1 w-fit">
-              <Link href={slide.ctaHref}>{t(slide.ctaLabelKey)}</Link>
+            <Button asChild size="lg" className="mt-1 w-fit" tabIndex={active ? undefined : -1}>
+              <Link href={slide.ctaHref} tabIndex={active ? undefined : -1}>
+                {t(slide.ctaLabelKey)}
+              </Link>
             </Button>
           </div>
         </div>

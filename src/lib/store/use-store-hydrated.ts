@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 
 import { useAuthStore } from "@/features/auth/store/auth.store";
 import { useCartStore } from "@/features/cart/store/cart.store";
+import { useCheckoutDetailsStore } from "@/features/checkout/store/checkout-details.store";
 import { useOrderStore } from "@/features/checkout/store/order.store";
 import { useWishlistStore } from "@/features/wishlist/store/wishlist.store";
 
@@ -19,11 +20,13 @@ function subscribeHydration(onStoreChange: () => void) {
   const unsubWishlist = useWishlistStore.persist.onFinishHydration(onStoreChange);
   const unsubAuth = useAuthStore.persist.onFinishHydration(onStoreChange);
   const unsubOrder = useOrderStore.persist.onFinishHydration(onStoreChange);
+  const unsubCheckoutDetails = useCheckoutDetailsStore.persist.onFinishHydration(onStoreChange);
   return () => {
     unsubCart();
     unsubWishlist();
     unsubAuth();
     unsubOrder();
+    unsubCheckoutDetails();
   };
 }
 
@@ -32,7 +35,8 @@ function getHydrationSnapshot() {
     useCartStore.persist.hasHydrated() &&
     useWishlistStore.persist.hasHydrated() &&
     useAuthStore.persist.hasHydrated() &&
-    useOrderStore.persist.hasHydrated()
+    useOrderStore.persist.hasHydrated() &&
+    useCheckoutDetailsStore.persist.hasHydrated()
   );
 }
 

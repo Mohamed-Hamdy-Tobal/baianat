@@ -1,5 +1,3 @@
-"use client";
-
 import { ShoppingBag } from "lucide-react";
 import { useTranslations } from "next-intl";
 

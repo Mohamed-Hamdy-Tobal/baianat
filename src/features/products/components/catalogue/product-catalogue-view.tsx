@@ -63,12 +63,12 @@ export async function ProductCatalogueView({
           <Suspense fallback={null}>
             <ProductSearch lockedCategory={lockedCategory} />
           </Suspense>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-wrap lg:items-center lg:justify-end lg:gap-3">
             <Suspense fallback={null}>
               <ProductFiltersMobile categories={categories} lockedCategory={lockedCategory} />
             </Suspense>
             <Suspense fallback={null}>
-              <ProductSortSelect lockedCategory={lockedCategory} />
+              <ProductSortSelect className="w-full lg:w-auto lg:min-w-44" lockedCategory={lockedCategory} />
             </Suspense>
           </div>
         </div>
