@@ -18,7 +18,7 @@ export async function Header() {
       <MainContainer className="flex h-17 items-center gap-4">
         <Link
           href="/"
-          className="group shrink-0 text-xl font-semibold tracking-[0.04em] text-text transition-all duration-300 hover:tracking-[0.08em] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface motion-reduce:transition-none motion-reduce:hover:tracking-[0.04em]"
+          className="group shrink-0 text-base md:text-xl font-semibold tracking-[0.04em] text-text transition-all duration-300 hover:tracking-[0.08em] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface motion-reduce:transition-none motion-reduce:hover:tracking-[0.04em]"
         >
           <span className="inline-block transition-transform duration-300 group-hover:-translate-y-0.5 motion-reduce:group-hover:translate-y-0">
             {tCommon("brand.name")}

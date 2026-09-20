@@ -52,7 +52,7 @@ export function ProductPurchaseActions({ product, outOfStock = false }: ProductP
       <div className="grid w-full grid-cols-2 gap-3">
         <Button
           type="button"
-          className="h-11 w-full"
+          className="h-11 w-full text-sm md:text-base"
           disabled={outOfStock}
           onClick={() => {
             if (outOfStock) return;
@@ -60,7 +60,7 @@ export function ProductPurchaseActions({ product, outOfStock = false }: ProductP
           }}
         >
           <ShoppingCart aria-hidden className="shrink-0" />
-          <span className="truncate">{outOfStock ? t("product.outOfStock") : t("product.addToCart")}</span>
+          <span className="truncate text-sm md:text-base">{outOfStock ? t("product.outOfStock") : t("product.addToCart")}</span>
         </Button>
         <Button
           type="button"
@@ -68,10 +68,10 @@ export function ProductPurchaseActions({ product, outOfStock = false }: ProductP
           aria-pressed={wishlisted}
           aria-label={wishlistLabel}
           onClick={() => toggleItem(product)}
-          className={cn("h-11 w-full", wishlisted && "border-primary/40 text-primary")}
+          className={cn("h-11 w-full text-sm md:text-base", wishlisted && "border-primary/40 text-primary")}
         >
           <Heart aria-hidden className={cn("shrink-0", wishlisted && "fill-current")} />
-          <span className="truncate">{wishlistLabel}</span>
+          <span className="truncate text-sm md:text-base">{wishlistLabel}</span>
         </Button>
       </div>
     </div>

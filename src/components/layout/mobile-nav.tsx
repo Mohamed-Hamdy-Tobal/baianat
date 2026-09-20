@@ -62,7 +62,7 @@ export function MobileNav() {
           <Menu aria-hidden />
         </Button>
       </SheetTrigger>
-      <SheetContent aria-describedby={undefined}>
+      <SheetContent aria-describedby={undefined} className="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>{tCommon("a11y.mainNav")}</SheetTitle>
         </SheetHeader>

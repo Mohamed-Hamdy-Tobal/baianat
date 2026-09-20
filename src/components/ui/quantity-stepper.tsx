@@ -51,7 +51,7 @@ function QuantityStepper({
       role="group"
       aria-label={inputLabel}
       className={cn(
-        "flex items-center gap-0 rounded-md border border-border bg-surface",
+        "flex items-center gap-0 rounded-md border border-border bg-surface w-full lg:w-auto",
         className,
       )}
       {...props}
@@ -76,7 +76,7 @@ function QuantityStepper({
         aria-label={inputLabel}
         disabled={disabled}
         className={cn(
-          "min-w-12 flex-1 border-x border-border bg-surface text-center text-sm font-medium text-text",
+          "w-full lg:min-w-12 flex-1 border-x border-border bg-surface text-center text-sm font-medium text-text",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
           "disabled:cursor-not-allowed disabled:opacity-50",
           isTouch ? "h-11" : "h-10",

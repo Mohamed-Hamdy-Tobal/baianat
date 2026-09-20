@@ -26,7 +26,7 @@ export function WishlistHeaderButton({ className }: WishlistHeaderButtonProps) {
         "relative inline-flex size-10 items-center justify-center rounded-md text-text",
         "transition-transform duration-200 hover:scale-105 hover:bg-background",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
-        "motion-reduce:hover:scale-100 motion-reduce:transition-none",
+        "motion-reduce:hover:scale-100 motion-reduce:transition-none hidden sm:block ",
         className,
       )}
     >

@@ -132,8 +132,8 @@ export function CheckoutSuccessView() {
             </div>
             <div className="flex flex-col gap-0.5 text-sm">
               <p className="font-medium text-text">{fullName}</p>
-              <p className="text-text-secondary">{customer.email}</p>
-              <p className="text-text-secondary">{customer.phone}</p>
+              <p className="text-text-secondary truncate">{customer.email}</p>
+              <p className="text-text-secondary truncate">{customer.phone}</p>
               <p className="mt-1 text-text-secondary">{addressLine}</p>
             </div>
           </section>
